@@ -1,4 +1,4 @@
-package org.homework.items.sideboards;
+package org.homework.pages;
 
 import org.homework.components.CartModalWindow;
 import org.openqa.selenium.By;

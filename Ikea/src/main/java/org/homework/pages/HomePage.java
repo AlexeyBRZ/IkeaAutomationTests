@@ -1,4 +1,4 @@
-package org.homework.homePage.pages;
+package org.homework.pages;
 import org.homework.components.Header;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

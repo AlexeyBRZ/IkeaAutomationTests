@@ -1,14 +1,14 @@
-package org.homework.catalogTesting.pages;
+package org.homework.products;
 
-import org.homework.items.sideboards.FjallboSideBoardItem;
+import org.homework.pages.FjallboSideBoardItem;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class SideBoards {
+public class SideBoardsProducts {
     private WebDriver driver;
 
-    public SideBoards(WebDriver driver) {
+    public SideBoardsProducts(WebDriver driver) {
         this.driver = driver;
     }
 

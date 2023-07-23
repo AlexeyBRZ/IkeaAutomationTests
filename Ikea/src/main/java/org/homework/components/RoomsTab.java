@@ -1,6 +1,6 @@
 package org.homework.components;
 
-import org.homework.catalogTesting.pages.DiningRoomPage;
+import org.homework.pages.DiningRoomPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -20,4 +20,5 @@ public class RoomsTab {
         getDiningRoomsBtn().click();
         return new DiningRoomPage(driver);
     }
+
 }

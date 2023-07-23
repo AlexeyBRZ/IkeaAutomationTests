@@ -1,17 +1,11 @@
 package org.homework;
 
-import org.homework.components.CartModalWindow;
-import org.homework.homePage.pages.HomePage;
+import org.homework.pages.HomePage;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebElement;
-import org.homework.homePage.pages.CartPage;
-import org.homework.components.Header;
-import org.homework.components.RoomsTab;
-import org.homework.catalogTesting.pages.DiningRoomPage;
-import org.homework.catalogTesting.pages.SideBoards;
 
-public class CatalogTest extends BaseTest{
+public class CatalogTest extends BaseTest {
 
 
     //Rooms
@@ -23,7 +17,7 @@ public class CatalogTest extends BaseTest{
     //Go to your shopping cart
     //check the item is added
     @Test
-    void isItemCanBeAddedToCart(){
+    void canItemBeAddedToCart() {
         WebElement sideBoard = new HomePage(getDriver())
                 .navigateToIkeaHomePage()
                 .getHeader()
@@ -40,4 +34,34 @@ public class CatalogTest extends BaseTest{
         boolean isFjalboSideBoarditemDisplayed = sideBoard.isDisplayed();
         Assertions.assertTrue(isFjalboSideBoarditemDisplayed);
     }
-}
+
+    @Test
+    void canProductBeRemovedFromCart() {
+        String uniqProductHref = "billy-bookcase-with-glass-doors-grey-art-00415603";
+        String itemNumber = "00415603";
+        boolean Billy = new HomePage(getDriver())
+                .navigateToIkeaHomePage()
+                .acceptAllCookiesBtn()
+                .getHeader()
+                .clickRoomsDropDown()
+                .clickDiningRoomsBtn()
+                .clickDisplayCabinetsImg()
+                .selectProduct(uniqProductHref)
+                .clickQuickViewBtn(itemNumber)
+                .clickAddToShoppingCartBtn()
+                .clickGoToShoppingCartBtn()
+                .removeFromCart(itemNumber)
+                .isProductRemoved(itemNumber);
+        Assertions.assertFalse(Billy);
+    }
+
+//    @Test
+//    void test() {
+//        String testString = "000123456789";
+//
+//        System.out.println(removeZero(testString));
+//    }
+
+
+    }
+

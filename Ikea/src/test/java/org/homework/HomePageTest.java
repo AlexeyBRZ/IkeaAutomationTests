@@ -2,9 +2,8 @@ package org.homework;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.homework.homePage.pages.HomePage;
+import org.homework.pages.HomePage;
 import org.openqa.selenium.WebElement;
-import org.homework.components.Header;
 
 /**
  * Unit test for simple App.
@@ -20,6 +19,21 @@ public class HomePageTest extends BaseTest{
                 .getHeader()
                 .switchToEnglish()
                 .acceptAllCookiesBtn()
+                .getIkeaForBusinessTitleLocator();
+
+        boolean isIkeaForBusinessTitleDisplayed = ikeaForBusinessTitle.isDisplayed();
+        Assertions.assertTrue(isIkeaForBusinessTitleDisplayed);
+
+    }
+
+
+    @Test
+    void isIkeaForBusinessArticleShown2(){
+        WebElement ikeaForBusinessTitle = new HomePage(getDriver())
+                .navigateToIkeaHomePage()
+//                .getHeader()
+//                .switchToEnglish()
+//                .acceptAllCookiesBtn()
                 .getIkeaForBusinessTitleLocator();
 
         boolean isIkeaForBusinessTitleDisplayed = ikeaForBusinessTitle.isDisplayed();

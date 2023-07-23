@@ -21,6 +21,8 @@ public class BaseTest {
         WebDriverManager.chromedriver().setup();
         options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
+//        options.addArguments("--disable-notifications");
+//        options.addArguments("disable-infobars");
     }
 
     @BeforeEach
