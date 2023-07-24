@@ -18,6 +18,8 @@ public class CatalogTest extends BaseTest {
     //check the item is added
     @Test
     void canItemBeAddedToCart() {
+        String productHref = "fjallbo-sideboard-black-art-00502799";
+        String itemId = "502799";
         WebElement sideBoard = new HomePage(getDriver())
                 .navigateToIkeaHomePage()
                 .getHeader()
@@ -27,12 +29,11 @@ public class CatalogTest extends BaseTest {
                 .clickRoomsDropDown()
                 .clickDiningRoomsBtn()
                 .clickSideBoardsImg()
-                .clickFjallboSideBoardImg()
+                .selectProduct(productHref)
                 .clickAddToShoppingCartBtn()
-                .getfjallboSideBoarditemIncart();
+                .productInCartModalWindow(itemId);
 
-        boolean isFjalboSideBoarditemDisplayed = sideBoard.isDisplayed();
-        Assertions.assertTrue(isFjalboSideBoarditemDisplayed);
+        Assertions.assertTrue(sideBoard.isDisplayed());
     }
 
     @Test
@@ -46,22 +47,29 @@ public class CatalogTest extends BaseTest {
                 .clickRoomsDropDown()
                 .clickDiningRoomsBtn()
                 .clickDisplayCabinetsImg()
-                .selectProduct(uniqProductHref)
+                .quickPreviewProduct(uniqProductHref)
                 .clickQuickViewBtn(itemNumber)
                 .clickAddToShoppingCartBtn()
                 .clickGoToShoppingCartBtn()
-                .removeFromCart(itemNumber)
+                .removeFromCart() // не работает этот метод, буду разбираться
                 .isProductRemoved(itemNumber);
         Assertions.assertFalse(Billy);
     }
 
-//    @Test
-//    void test() {
-//        String testString = "000123456789";
-//
-//        System.out.println(removeZero(testString));
-//    }
+    @Test
+    void isMaterialsBlockClickable() {
+        String categoryHref = "children-s-room/children-3-7/comfort-toys";
+        String productHref = "gosig-ratta-soft-toy-grey-beige-art-90490476";
+        WebElement materialBtn = new HomePage(getDriver())
+                .navigateToIkeaHomePage()
+                .acceptAllCookiesBtn()
+                .getHeader()
+                .clickProductsTab()
+                .clickComfortToys(categoryHref)
+                .selectProduct(productHref)
+                .getMaterialsBlockBtn();
 
-
+        Assertions.assertTrue(materialBtn.isDisplayed());
+    }
     }
 

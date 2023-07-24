@@ -1,7 +1,6 @@
 package org.homework.pages;
 
-import org.homework.components.Header;
-import org.homework.products.DisplayCabinetsProducts;
+import org.homework.products.ProductPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -13,10 +12,11 @@ public class DisplayCabinetsPage {
     }
 //div[@class="itemInfo"]//a[@href='/en/rooms/dining-room/display-cabinets/display-cabinets/billy-bookcase-with-glass-doors-grey-art-00415603']
 
-    public DisplayCabinetsProducts selectProduct(String href) {
+    public ProductPage quickPreviewProduct(String href) {
        WebElement product = driver.findElement(By.xpath("//div[@class=\"itemInfo\"]//a[@href='/en/rooms/dining-room/display-cabinets/display-cabinets/" + href + "']"));
                product.click();
-               return new DisplayCabinetsProducts(driver);
+               return new ProductPage(driver);
+
 
     }
 

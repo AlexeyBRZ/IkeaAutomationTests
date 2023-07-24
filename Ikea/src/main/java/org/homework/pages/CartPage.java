@@ -18,18 +18,18 @@ public class CartPage {
         return sb.toString();}
 
     //415603
-    public CartPage removeFromCart(String itemNumber) {
-        By removeCertainProductFromCartBtnLocator = By.xpath("//button[@onclick='Shoppincart.removeItem(" + removeZero(itemNumber) + ")']");
-        new WebDriverWait(driver, Duration.ofSeconds(15))
-                .until(ExpectedConditions.elementToBeClickable(removeCertainProductFromCartBtnLocator))
-                .click();
-        return this;
-    }
-
-//    public CartPage removeFromCart() {
-//        driver.findElement(By.xpath("//button[@onclick='Shoppincart.removeItem(415603)']"));
+//    public CartPage removeFromCart(String itemNumber) {
+//        By removeCertainProductFromCartBtnLocator = By.xpath("//button[@onclick='Shoppincart.removeItem(" + removeZero(itemNumber) + ")']");
+//        new WebDriverWait(driver, Duration.ofSeconds(15))
+//                .until(ExpectedConditions.elementToBeClickable(removeCertainProductFromCartBtnLocator))
+//                .click();
 //        return this;
 //    }
+
+    public CartPage removeFromCart() {
+        driver.findElement(By.xpath("//button[@onclick='Shoppincart.removeItem(415603)']")).click();
+        return this;
+    }
 
     public boolean isProductRemoved(String itemNumber){
         driver.findElement(By.xpath("//div[@data-group=" + removeZero(itemNumber)  + "]")).isDisplayed();

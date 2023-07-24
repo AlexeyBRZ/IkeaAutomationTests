@@ -11,23 +11,20 @@ import java.time.Duration;
 
 
 public class CartModalWindow {
+
     private WebDriver driver;
     public CartModalWindow(WebDriver driver) {
         this.driver = driver;
     }
 
-    private By test = By.xpath("//img[@src=\"https://d2rbyiw1vv51io.cloudfront.net/web/ikea4/images/291/1129167_PE891018_S3.jpg\"]");
-
-    private By fjallboSideBoarditemIncartLocator = By.xpath("//div[@class=\"modal-content modal-buy\"]//div[@class=\"additems_list\"]//img[@src=\"https://d2rbyiw1vv51io.cloudfront.net/web/ikea4/images/291/1129167_PE891018_S3.jpg\"]");
-    public WebElement getfjallboSideBoarditemIncart(){
-        return driver.findElement(test);
+    public WebElement productInCartModalWindow(String itemId){
+        return driver.findElement(By.xpath("//div[@class='modal-content modal-buy']//article[@data-id='" + itemId + "']"));
     }
 
     public CartPage clickGoToShoppingCartBtn() {
-        By goToCartBtnLocator = By.xpath("//div[@class=\"modal-content modal-buy\"]//button[@data-action=\"goCart\"]//span");
+        By goToCartBtnLocator = By.xpath("//div[@class=\"modal-content modal-buy\"]//button[@data-action=\"goCart\"]");
         new WebDriverWait(driver, Duration.ofSeconds(15))
-                .until(ExpectedConditions.elementToBeClickable(goToCartBtnLocator))
-                .click();
+                .until(ExpectedConditions.elementToBeClickable(goToCartBtnLocator));
         return new CartPage();
     }
 }

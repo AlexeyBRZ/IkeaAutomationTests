@@ -35,5 +35,9 @@ public class Header {
         getRoomsDropDown().click();
         return new RoomsTab(driver);
     }
+    public ProductsTab clickProductsTab(){
+        driver.findElement(By.xpath("//a[@id=\"navbarDropdownProducts\"]")).click();
+        return new ProductsTab(driver);
+    }
 
 }
