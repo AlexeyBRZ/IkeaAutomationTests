@@ -10,8 +10,7 @@ public class ProductsTab {
         this.driver = driver;
     }
 
-    //
-    public ComfortToysPage clickComfortToys(String href){
+    public ComfortToysPage selectCategory(String href){
         driver.findElement(By.xpath("//a[@href='/en/products/" + href + "']")).click();
         return new ComfortToysPage(driver);
     }

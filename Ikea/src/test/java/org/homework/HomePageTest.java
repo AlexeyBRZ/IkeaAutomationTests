@@ -10,8 +10,6 @@ import org.openqa.selenium.WebElement;
  */
 public class HomePageTest extends BaseTest{
 
- //   private String ikeaUrl = "https://www.ikea.lv/en";
-
     @Test
     void isIkeaForBusinessArticleShown(){
         WebElement ikeaForBusinessTitle = new HomePage(getDriver())
@@ -26,11 +24,11 @@ public class HomePageTest extends BaseTest{
 
     }
 
-
     @Test
     void isIkeaForBusinessArticleShown2(){
         WebElement ikeaForBusinessTitle = new HomePage(getDriver())
                 .navigateToIkeaHomePage()
+                .clickPaxWardrobeSystemsBlock()
 //                .getHeader()
 //                .switchToEnglish()
 //                .acceptAllCookiesBtn()

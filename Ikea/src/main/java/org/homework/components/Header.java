@@ -13,30 +13,19 @@ public class Header {
     private By languageSelectorLocator = By.xpath("//li[@class=\"nav-item dropdown\"]//a[@role=\"button\"]");
     private By switchToEnglishBtnLocator = By.xpath("//a[@href=\"https://www.ikea.lv/en\"]");
     private By roomsDropDownLocator = By.xpath("//a[@id=\"navbarDropdownRooms\"]");
-
-    public WebElement getLanguageSelector(){
-        return driver.findElement(languageSelectorLocator);
-    }
-
-    public WebElement getSwitchToEnglishBtn(){
-        return driver.findElement(switchToEnglishBtnLocator);
-    }
-
-    public WebElement getRoomsDropDown(){
-        return driver.findElement(roomsDropDownLocator);
-    }
+    private By productsTabLocator = By.xpath("//a[@id=\"navbarDropdownProducts\"]");
 
     public HomePage switchToEnglish(){
-        getLanguageSelector().click();
-        getSwitchToEnglishBtn().click();
+        driver.findElement(languageSelectorLocator).click();
+        driver.findElement(switchToEnglishBtnLocator).click();
         return new HomePage(driver);
     }
     public RoomsTab clickRoomsDropDown(){
-        getRoomsDropDown().click();
+        driver.findElement(roomsDropDownLocator).click();
         return new RoomsTab(driver);
     }
     public ProductsTab clickProductsTab(){
-        driver.findElement(By.xpath("//a[@id=\"navbarDropdownProducts\"]")).click();
+        driver.findElement(productsTabLocator).click();
         return new ProductsTab(driver);
     }
 

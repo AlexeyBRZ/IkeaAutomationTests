@@ -10,7 +10,6 @@ import org.openqa.selenium.chrome.ChromeOptions;
 public class BaseTest {
     public static WebDriver driver;
     private static ChromeOptions options;
-    private String ikeaUrl = "https://www.ikea.lv/en";
 
     public static WebDriver getDriver() {
         return driver;
@@ -21,8 +20,8 @@ public class BaseTest {
         WebDriverManager.chromedriver().setup();
         options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
-//        options.addArguments("--disable-notifications");
-//        options.addArguments("disable-infobars");
+        options.addArguments("--disable-notifications");
+        options.addArguments("disable-infobars");
     }
 
     @BeforeEach

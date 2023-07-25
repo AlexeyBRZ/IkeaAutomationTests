@@ -10,16 +10,11 @@ public class DisplayCabinetsPage {
     public DisplayCabinetsPage(WebDriver driver) {
         this.driver = driver;
     }
-//div[@class="itemInfo"]//a[@href='/en/rooms/dining-room/display-cabinets/display-cabinets/billy-bookcase-with-glass-doors-grey-art-00415603']
 
     public ProductPage quickPreviewProduct(String href) {
        WebElement product = driver.findElement(By.xpath("//div[@class=\"itemInfo\"]//a[@href='/en/rooms/dining-room/display-cabinets/display-cabinets/" + href + "']"));
                product.click();
                return new ProductPage(driver);
 
-
     }
-
-  //  private By billyLocator = By.xpath("//div[@class=\"itemInfo\"]//a[@href=\"/en/rooms/dining-room/display-cabinets/display-cabinets/billy-bookcase-with-glass-doors-grey-art-00415603\"]");
-
 }

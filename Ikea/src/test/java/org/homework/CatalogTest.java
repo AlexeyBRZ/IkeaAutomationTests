@@ -65,7 +65,7 @@ public class CatalogTest extends BaseTest {
                 .acceptAllCookiesBtn()
                 .getHeader()
                 .clickProductsTab()
-                .clickComfortToys(categoryHref)
+                .selectCategory(categoryHref)
                 .selectProduct(productHref)
                 .getMaterialsBlockBtn();
 

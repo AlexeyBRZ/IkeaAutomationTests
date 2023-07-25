@@ -22,8 +22,13 @@ public class HomePage {
 
     private By ikeaForBusinessTitleLocator = By.xpath("//div[@class=\"mb-4 text-wrap\"]//h3[text()= \"IKEA for business\"]");
     private By acceptAllCookiesBtnLocator = By.xpath("//div[@id=\"CybotCookiebotDialogBodyButtons\"]//button[text()=\"Accept all cookies\"]");
+
     private String ikeaUrl = "https://www.ikea.lv/en";
 
+    public HomePage navigateToIkeaHomePage() {
+        driver.get(ikeaUrl);
+        return this;
+    }
 
     public WebElement getIkeaForBusinessTitleLocator() {
         return driver.findElement(ikeaForBusinessTitleLocator);
@@ -36,8 +41,10 @@ public class HomePage {
        return this;
    }
 
-    public HomePage navigateToIkeaHomePage() {
-        driver.get(ikeaUrl);
+   public HomePage clickPaxWardrobeSystemsBlock(){
+        driver.findElement(By.xpath("#traffic_group_118_96")).click();
         return this;
-    }
+   }
+
+
 }

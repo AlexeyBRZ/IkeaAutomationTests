@@ -10,7 +10,7 @@ public class DiningRoomPage {
         this.driver = driver;
     }
 
-    private By sideBoardsImgLocator = By.xpath("//a[@href=\"/en/rooms/dining-room/side-boards\"]//span[@class='image']");
+    private By sideBoardsImgLocator = By.xpath("//a[@href='/en/rooms/dining-room/side-boards']");
     private By displayCabinetsLocator = By.xpath("//a[@href='/en/rooms/dining-room/display-cabinets']");
 
     public SideBoardsPage clickSideBoardsImg(){
