@@ -1,5 +1,6 @@
 package org.homework.components;
 
+import org.homework.pages.ComfortToysPage;
 import org.homework.pages.DiningRoomPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -15,6 +16,11 @@ public class RoomsTab {
     public WebElement getDiningRoomsBtn(){
         return driver.findElement(diningRoomBtnLocator);
     }
+
+//    public DiningRoomPage selectCategoryInRoomsTab(String category){
+//        driver.findElement(By.xpath("//a[@href='/en/rooms/" + category + "']")).click();
+//        return new DiningRoomPage(driver);
+//    }
 
     public DiningRoomPage clickDiningRoomsBtn(){
         getDiningRoomsBtn().click();

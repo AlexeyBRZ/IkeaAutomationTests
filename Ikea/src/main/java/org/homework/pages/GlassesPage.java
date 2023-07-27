@@ -5,11 +5,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class ComfortToysPage {
+public class GlassesPage {
 
     private WebDriver driver;
 
-    public ComfortToysPage(WebDriver driver) {
+    public GlassesPage(WebDriver driver) {
         this.driver = driver;
     }
 
@@ -19,4 +19,3 @@ public class ComfortToysPage {
         return new ProductPage(driver);
     }
 }
-//following-sibling::div[@class=\"card-footer\"]//button

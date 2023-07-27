@@ -17,9 +17,15 @@ public class CartModalWindow {
         this.driver = driver;
     }
 
-    public WebElement productInCartModalWindow(String itemId){
-        return driver.findElement(By.xpath("//div[@class='modal-content modal-buy']//article[@data-id='" + itemId + "']"));
+    ////article[@class='item']//div[text()='BILLY']
+
+    public WebElement productInCartModalWindow(String productName){
+        return driver.findElement(By.xpath("//div[@class='additems_list']//article[@class='item']//div[text()='" + productName + "']"));
     }
+
+//    public WebElement productInCartModalWindow(String itemId){
+//        return driver.findElement(By.xpath("//div[@class='modal-content modal-buy']//article[@data-id='" + itemId + "']"));
+//    }
 
     public CartPage clickGoToShoppingCartBtn() {
         By goToCartBtnLocator = By.xpath("//div[@class=\"modal-content modal-buy\"]//button[@data-action=\"goCart\"]");

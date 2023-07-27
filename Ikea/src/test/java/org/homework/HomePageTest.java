@@ -1,5 +1,6 @@
 package org.homework;
 
+import org.homework.constants.Values;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.homework.pages.HomePage;
@@ -15,8 +16,8 @@ public class HomePageTest extends BaseTest{
         WebElement ikeaForBusinessTitle = new HomePage(getDriver())
                 .navigateToIkeaHomePage()
                 .getHeader()
-                .switchToEnglish()
-                .acceptAllCookiesBtn()
+                .clickLanguageDropDown()
+                .switchLanguage(Values.ENGLISH)
                 .getIkeaForBusinessTitleLocator();
 
         boolean isIkeaForBusinessTitleDisplayed = ikeaForBusinessTitle.isDisplayed();

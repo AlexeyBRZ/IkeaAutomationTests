@@ -21,7 +21,8 @@ public class HomePage {
     }
 
     private By ikeaForBusinessTitleLocator = By.xpath("//div[@class=\"mb-4 text-wrap\"]//h3[text()= \"IKEA for business\"]");
-    private By acceptAllCookiesBtnLocator = By.xpath("//div[@id=\"CybotCookiebotDialogBodyButtons\"]//button[text()=\"Accept all cookies\"]");
+
+    private By acceptAllCookiesBtnLocator = By.xpath("//button[@id='CybotCookiebotDialogBodyLevelButtonLevelOptinAllowAll']");
 
     private String ikeaUrl = "https://www.ikea.lv/en";
 
@@ -34,12 +35,12 @@ public class HomePage {
         return driver.findElement(ikeaForBusinessTitleLocator);
     }
 
-   public HomePage acceptAllCookiesBtn () {
-       WebElement getAcceptAllCookiesBtn = new WebDriverWait(driver, Duration.ofSeconds(15))
-                       .until(ExpectedConditions.elementToBeClickable(acceptAllCookiesBtnLocator));
-       getAcceptAllCookiesBtn.click();
-       return this;
-   }
+    public HomePage clickAcceptAllCookiesBtn() {
+        WebElement getAcceptAllCookiesBtn = new WebDriverWait(driver, Duration.ofSeconds(15))
+                .until(ExpectedConditions.elementToBeClickable(acceptAllCookiesBtnLocator));
+        getAcceptAllCookiesBtn.click();
+        return this;
+    }
 
    public HomePage clickPaxWardrobeSystemsBlock(){
         driver.findElement(By.xpath("#traffic_group_118_96")).click();

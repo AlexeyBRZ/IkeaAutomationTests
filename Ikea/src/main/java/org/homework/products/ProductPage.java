@@ -1,6 +1,7 @@
 package org.homework.products;
 
 import org.homework.components.CartModalWindow;
+import org.homework.components.Header;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -13,10 +14,16 @@ public class ProductPage {
         this.driver = driver;
     }
 
- public ProductPage clickQuickViewBtn(String iTemNumber){
-        driver.findElement(By.xpath("//button[@data-item=" + iTemNumber + "]"));
-        return this;
- }
+    public Header getHeader() {
+        return new Header(driver);
+    }
+
+
+////div[contains(@class, 'itemBlock')]//div[@class='card-body']//h3[text()='HAUGA']
+// public ProductPage clickQuickViewBtn(String iTemNumber, int position){
+//        driver.findElements(By.xpath("//button[@data-item=" + iTemNumber + "]")).get(position).click();
+//        return this;
+// }
 
     public CartModalWindow clickAddToShoppingCartBtn(){
         driver.findElement(By.xpath("//button[@data-action='buy']")).click();
@@ -26,4 +33,6 @@ public class ProductPage {
       public WebElement getMaterialsBlockBtn() {
         return driver.findElement(By.xpath("//a[@id=\"pills-environment-tab\"]"));
     }
+
+
 }

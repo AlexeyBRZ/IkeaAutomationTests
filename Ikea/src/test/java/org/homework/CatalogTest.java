@@ -1,75 +1,110 @@
 package org.homework;
 
+import org.homework.constants.Categories;
+import org.homework.constants.Colors;
+import org.homework.constants.Values;
+import org.homework.constants.ProductNames;
 import org.homework.pages.HomePage;
+import org.homework.pages.OfficeChairsPage;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebElement;
 
-public class CatalogTest extends BaseTest {
+public class CatalogTest extends BaseTest implements ProductNames, Categories, Values {
 
-
-    //Rooms
-    //DiningRoom
-    //SideBoards
-    //IdaNas
-    //clickOnImage
-    //Add to shopping cart
-    //Go to your shopping cart
-    //check the item is added
     @Test
-    void canItemBeAddedToCart() {
-        String productHref = "fjallbo-sideboard-black-art-00502799";
-        String itemId = "502799";
-        WebElement sideBoard = new HomePage(getDriver())
+    void changeLanguageAndCookiesAcceptance() {
+         new HomePage(getDriver())
                 .navigateToIkeaHomePage()
                 .getHeader()
-                .switchToEnglish()
-                .acceptAllCookiesBtn()
+                .clickLanguageDropDown()
+                .switchLanguage(Values.LATVIAN)
+                .clickAcceptAllCookiesBtn();
+        Assertions.assertEquals("https://www.ikea.lv/" + Values.LATVIAN, driver.getCurrentUrl());
+    }
+
+    @Test
+    void canItemBeAddedToCart() {
+        WebElement sideBoard = new HomePage(getDriver())
+                .navigateToIkeaHomePage()
+                .clickAcceptAllCookiesBtn()
                 .getHeader()
                 .clickRoomsDropDown()
                 .clickDiningRoomsBtn()
                 .clickSideBoardsImg()
-                .selectProduct(productHref)
+                .selectProduct(ProductNames.FJALLBO)
                 .clickAddToShoppingCartBtn()
-                .productInCartModalWindow(itemId);
+                .productInCartModalWindow(ProductNames.FJALLBO);
 
         Assertions.assertTrue(sideBoard.isDisplayed());
     }
 
     @Test
     void canProductBeRemovedFromCart() {
-        String uniqProductHref = "billy-bookcase-with-glass-doors-grey-art-00415603";
-        String itemNumber = "00415603";
         boolean Billy = new HomePage(getDriver())
                 .navigateToIkeaHomePage()
-                .acceptAllCookiesBtn()
+                .clickAcceptAllCookiesBtn()
                 .getHeader()
                 .clickRoomsDropDown()
                 .clickDiningRoomsBtn()
                 .clickDisplayCabinetsImg()
-                .quickPreviewProduct(uniqProductHref)
-                .clickQuickViewBtn(itemNumber)
-                .clickAddToShoppingCartBtn()
+                .clickQuickViewBtn(ProductNames.BILLY, 0)
+                .clickAddToShoppingCartFromQuickViewBtn()
                 .clickGoToShoppingCartBtn()
-                .removeFromCart() // не работает этот метод, буду разбираться
-                .isProductRemoved(itemNumber);
+                .removeProductFromCart() // не работает этот метод, не понимаю почему? получаю "java.lang.IllegalArgumentException: Input must be set"
+                .isProductRemoved();
         Assertions.assertFalse(Billy);
     }
 
     @Test
     void isMaterialsBlockClickable() {
-        String categoryHref = "children-s-room/children-3-7/comfort-toys";
-        String productHref = "gosig-ratta-soft-toy-grey-beige-art-90490476";
         WebElement materialBtn = new HomePage(getDriver())
                 .navigateToIkeaHomePage()
-                .acceptAllCookiesBtn()
+                .clickAcceptAllCookiesBtn()
                 .getHeader()
                 .clickProductsTab()
-                .selectCategory(categoryHref)
-                .selectProduct(productHref)
+                .selectComfortCategory(Categories.COMFORT_TOYS)//меняется хреф, пока создал 2 разных в интерфейсе. Как обойти?
+                .selectProduct(ProductNames.GREY_RAT)
                 .getMaterialsBlockBtn();
 
         Assertions.assertTrue(materialBtn.isDisplayed());
     }
+
+    @Test
+    void ChairsFilter() {
+        WebElement colorCheckbox = new HomePage(getDriver())
+                .navigateToIkeaHomePage()
+                .clickAcceptAllCookiesBtn()
+                .getHeader()
+                .clickProductsTab()
+                .selectOfficeChairsCategory(Categories.OFFICE_CHAIRS)
+                .clickPriceDropDown()
+                .pickFrom100To200CheckBox()
+                .clickColorDropDown()
+                .pickColor(Colors.BLACK_COLOR)
+                .clickColorDropDown()
+                .clickResetFilters()
+                .clickColorDropDown()
+                .getColorCheckbox(Colors.BLACK_COLOR);
+        Assertions.assertFalse(colorCheckbox.isSelected());
     }
+
+    @Test //пока не работает, есть подозрения что проблема просто в икспасе
+    void SearchFromPages() {
+        WebElement inStockCheckBox = new HomePage(getDriver())
+                .navigateToIkeaHomePage()
+                .clickAcceptAllCookiesBtn()
+                .getHeader()
+                .clickProductsTab()
+                .selectGlassesCategory(Categories.GLASSES)
+                .selectProduct(ProductNames.SVALKA)
+                .getHeader()
+                .inputSearchField("Bed")
+                .clickSearchBtn()
+                .clickCurrentlyInStockCheckBox()
+                .clickNewCheckBox()
+                .getSortByDropDown();
+        Assertions.assertTrue(inStockCheckBox.isDisplayed());
+    }
+}
 
