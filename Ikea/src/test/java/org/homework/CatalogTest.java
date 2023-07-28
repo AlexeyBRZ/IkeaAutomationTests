@@ -2,10 +2,9 @@ package org.homework;
 
 import org.homework.constants.Categories;
 import org.homework.constants.Colors;
-import org.homework.constants.Values;
 import org.homework.constants.ProductNames;
+import org.homework.constants.Values;
 import org.homework.pages.HomePage;
-import org.homework.pages.OfficeChairsPage;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebElement;
@@ -14,7 +13,7 @@ public class CatalogTest extends BaseTest implements ProductNames, Categories, V
 
     @Test
     void changeLanguageAndCookiesAcceptance() {
-         new HomePage(getDriver())
+        new HomePage(getDriver())
                 .navigateToIkeaHomePage()
                 .getHeader()
                 .clickLanguageDropDown()
@@ -30,30 +29,30 @@ public class CatalogTest extends BaseTest implements ProductNames, Categories, V
                 .clickAcceptAllCookiesBtn()
                 .getHeader()
                 .clickRoomsDropDown()
-                .clickDiningRoomsBtn()
+                .clickDiningRoomsBtn(Categories.DINNING_ROOM)
                 .clickSideBoardsImg()
                 .selectProduct(ProductNames.FJALLBO)
                 .clickAddToShoppingCartBtn()
-                .productInCartModalWindow(ProductNames.FJALLBO);
+                .getProductInCartModalWindow(ProductNames.FJALLBO);
 
         Assertions.assertTrue(sideBoard.isDisplayed());
     }
 
     @Test
     void canProductBeRemovedFromCart() {
-        boolean Billy = new HomePage(getDriver())
+        boolean billy = new HomePage(getDriver())
                 .navigateToIkeaHomePage()
                 .clickAcceptAllCookiesBtn()
                 .getHeader()
                 .clickRoomsDropDown()
-                .clickDiningRoomsBtn()
+                .clickDiningRoomsBtn(Categories.DINNING_ROOM)
                 .clickDisplayCabinetsImg()
                 .clickQuickViewBtn(ProductNames.BILLY, 0)
                 .clickAddToShoppingCartFromQuickViewBtn()
                 .clickGoToShoppingCartBtn()
                 .removeProductFromCart() // не работает этот метод, не понимаю почему? получаю "java.lang.IllegalArgumentException: Input must be set"
                 .isProductRemoved();
-        Assertions.assertFalse(Billy);
+        Assertions.assertFalse(billy);
     }
 
     @Test
@@ -63,7 +62,7 @@ public class CatalogTest extends BaseTest implements ProductNames, Categories, V
                 .clickAcceptAllCookiesBtn()
                 .getHeader()
                 .clickProductsTab()
-                .selectComfortCategory(Categories.COMFORT_TOYS)//меняется хреф, пока создал 2 разных в интерфейсе. Как обойти?
+                .selectComfortToysCategory(Categories.COMFORT_TOYS)
                 .selectProduct(ProductNames.GREY_RAT)
                 .getMaterialsBlockBtn();
 
@@ -71,7 +70,7 @@ public class CatalogTest extends BaseTest implements ProductNames, Categories, V
     }
 
     @Test
-    void ChairsFilter() {
+    void chairsFilter() {
         WebElement colorCheckbox = new HomePage(getDriver())
                 .navigateToIkeaHomePage()
                 .clickAcceptAllCookiesBtn()
@@ -89,9 +88,9 @@ public class CatalogTest extends BaseTest implements ProductNames, Categories, V
         Assertions.assertFalse(colorCheckbox.isSelected());
     }
 
-    @Test //пока не работает, есть подозрения что проблема просто в икспасе
-    void SearchFromPages() {
-        WebElement inStockCheckBox = new HomePage(getDriver())
+    @Test
+    void searchFromPages() {
+        WebElement isStockCheckBox = new HomePage(getDriver())
                 .navigateToIkeaHomePage()
                 .clickAcceptAllCookiesBtn()
                 .getHeader()
@@ -102,9 +101,9 @@ public class CatalogTest extends BaseTest implements ProductNames, Categories, V
                 .inputSearchField("Bed")
                 .clickSearchBtn()
                 .clickCurrentlyInStockCheckBox()
-                .clickNewCheckBox()
+                //           .clickNewCheckBox() // не понимаю почему не прожимается этот чекбокс, все остальное работает
                 .getSortByDropDown();
-        Assertions.assertTrue(inStockCheckBox.isDisplayed());
+        Assertions.assertTrue(isStockCheckBox.isDisplayed());
     }
 }
 

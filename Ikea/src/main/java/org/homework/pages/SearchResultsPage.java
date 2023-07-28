@@ -1,6 +1,5 @@
 package org.homework.pages;
 
-import org.homework.products.ProductPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -10,37 +9,33 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 public class SearchResultsPage {
-    private WebDriver driver;
+    private final WebDriver driver;
 
     public SearchResultsPage(WebDriver driver) {
         this.driver = driver;
     }
 
-    //div[@id='newFilters']//input[@id="is_buyable"]
-    //div[@id='newFilters']//input[@id="is_buyable"]//following-sibling::ins
-    public SearchResultsPage clickCurrentlyInStockCheckBox(){
-        By currentlyInStockCheckBoxLocator = By.xpath("//div[@id='newFilters']//input[@id=\"is_buyable\"]//following-sibling::ins");
+    public SearchResultsPage clickCurrentlyInStockCheckBox() {
+        By currentlyInStockCheckBoxLocator = By.xpath("//div[@id='newFilters']//label[@for='is_buyable']");
         new WebDriverWait(driver, Duration.ofSeconds(15))
                 .until(ExpectedConditions.elementToBeClickable(currentlyInStockCheckBoxLocator))
                 .click();
-   //     driver.findElement(By.xpath("//div[@id='newFilters']//input[@id=\"is_buyable\"]//following-sibling::ins")).click();
-        return this;
+        return new SearchResultsPage(driver);
     }
 
-    public CartPage removeProductFromCart() {
-        By removeFromCartBtnLocator = By.xpath("//span[text()='BILLY']//ancestor::div[@class='item itemProduct']//span[text()='Remove']");
+    //div[@id='newFilters']//input[@id="is_new"]
+    //div[@id='newFilters']//label[@for="is_new"]
+    //div[@id='contentWrapper']//div[@id='newFilters']//label[@for='is_new']
+    //label[@for='is_new']//parent::span[@class='icheck icheck_flat ']
+    public SearchResultsPage clickNewCheckBox() {
+        By newCheckBoxLocator = By.xpath("//label[@for='is_new']//parent::span[@class='icheck icheck_flat ']");
         new WebDriverWait(driver, Duration.ofSeconds(15))
-                .until(ExpectedConditions.elementToBeClickable(removeFromCartBtnLocator))
+                .until(ExpectedConditions.elementToBeClickable(newCheckBoxLocator))
                 .click();
-        return new CartPage();
-    }
-
-    public SearchResultsPage clickNewCheckBox(){
-        driver.findElement(By.xpath("//div[@id='newFilters']//input[@id=\"is_new\"]")).click();
         return this;
     }
 
-    public WebElement getSortByDropDown(){
-       return driver.findElement(By.xpath("//div[@class='filterContainer']//div[@id='orderFilter']"));
+    public WebElement getSortByDropDown() {
+        return driver.findElement(By.xpath("//div[@class='filterContainer']//div[@id='orderFilter']"));
     }
 }

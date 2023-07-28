@@ -8,7 +8,7 @@ import org.openqa.selenium.WebElement;
 
 public class ProductPage {
 
-    private WebDriver driver;
+    private final WebDriver driver;
 
     public ProductPage(WebDriver driver) {
         this.driver = driver;
@@ -18,21 +18,12 @@ public class ProductPage {
         return new Header(driver);
     }
 
-
-////div[contains(@class, 'itemBlock')]//div[@class='card-body']//h3[text()='HAUGA']
-// public ProductPage clickQuickViewBtn(String iTemNumber, int position){
-//        driver.findElements(By.xpath("//button[@data-item=" + iTemNumber + "]")).get(position).click();
-//        return this;
-// }
-
-    public CartModalWindow clickAddToShoppingCartBtn(){
+    public CartModalWindow clickAddToShoppingCartBtn() {
         driver.findElement(By.xpath("//button[@data-action='buy']")).click();
         return new CartModalWindow(driver);
     }
 
-      public WebElement getMaterialsBlockBtn() {
+    public WebElement getMaterialsBlockBtn() {
         return driver.findElement(By.xpath("//a[@id=\"pills-environment-tab\"]"));
     }
-
-
 }

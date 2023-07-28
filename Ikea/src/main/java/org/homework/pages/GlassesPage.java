@@ -7,7 +7,7 @@ import org.openqa.selenium.WebElement;
 
 public class GlassesPage {
 
-    private WebDriver driver;
+    private final WebDriver driver;
 
     public GlassesPage(WebDriver driver) {
         this.driver = driver;

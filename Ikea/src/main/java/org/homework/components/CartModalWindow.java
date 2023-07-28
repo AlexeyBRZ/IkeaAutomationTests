@@ -12,20 +12,17 @@ import java.time.Duration;
 
 public class CartModalWindow {
 
-    private WebDriver driver;
+    private final WebDriver driver;
+
     public CartModalWindow(WebDriver driver) {
         this.driver = driver;
     }
 
-    ////article[@class='item']//div[text()='BILLY']
-
-    public WebElement productInCartModalWindow(String productName){
-        return driver.findElement(By.xpath("//div[@class='additems_list']//article[@class='item']//div[text()='" + productName + "']"));
+    public WebElement getProductInCartModalWindow(String productName) {
+        By productInCartLocator = By.xpath("//div[@class='modal-content modal-buy']//div[@class='additems_list']//article[@class='item']//div[text()='" + productName + "']");
+        return new WebDriverWait(driver, Duration.ofSeconds(15))
+                .until(ExpectedConditions.elementToBeClickable(productInCartLocator));
     }
-
-//    public WebElement productInCartModalWindow(String itemId){
-//        return driver.findElement(By.xpath("//div[@class='modal-content modal-buy']//article[@data-id='" + itemId + "']"));
-//    }
 
     public CartPage clickGoToShoppingCartBtn() {
         By goToCartBtnLocator = By.xpath("//div[@class=\"modal-content modal-buy\"]//button[@data-action=\"goCart\"]");

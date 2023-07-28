@@ -1,18 +1,15 @@
 package org.homework;
 
 import org.homework.constants.Values;
+import org.homework.pages.HomePage;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.homework.pages.HomePage;
 import org.openqa.selenium.WebElement;
 
-/**
- * Unit test for simple App.
- */
-public class HomePageTest extends BaseTest{
+public class HomePageTest extends BaseTest {
 
     @Test
-    void isIkeaForBusinessArticleShown(){
+    void isIkeaForBusinessArticleShown() {
         WebElement ikeaForBusinessTitle = new HomePage(getDriver())
                 .navigateToIkeaHomePage()
                 .getHeader()
@@ -22,25 +19,15 @@ public class HomePageTest extends BaseTest{
 
         boolean isIkeaForBusinessTitleDisplayed = ikeaForBusinessTitle.isDisplayed();
         Assertions.assertTrue(isIkeaForBusinessTitleDisplayed);
-
     }
 
     @Test
-    void isIkeaForBusinessArticleShown2(){
-        WebElement ikeaForBusinessTitle = new HomePage(getDriver())
+    void isIkeaForBusinessArticleShown2() {
+        WebElement nextBtn = new HomePage(getDriver())
                 .navigateToIkeaHomePage()
                 .clickPaxWardrobeSystemsBlock()
-//                .getHeader()
-//                .switchToEnglish()
-//                .acceptAllCookiesBtn()
-                .getIkeaForBusinessTitleLocator();
+                .getNextBtn();
 
-        boolean isIkeaForBusinessTitleDisplayed = ikeaForBusinessTitle.isDisplayed();
-        Assertions.assertTrue(isIkeaForBusinessTitleDisplayed);
-
+        Assertions.assertTrue(nextBtn.isDisplayed());
     }
-//    Example: //*[ contains (text(), ‘Get started’ ) ]
-//    Example: //*[ text() = ‘Get started free’ ]
-    //div[@class="mb-4 text-wrap"]//h3[@class="display-6"]//h3[text()= "IKEA for business"]
-
 }

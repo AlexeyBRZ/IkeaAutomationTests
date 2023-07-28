@@ -15,28 +15,20 @@ public class CartPage {
         while (i < str.length() & str.charAt(i) == '0') i++;
         StringBuffer sb = new StringBuffer(str);
         sb.replace(0, i, "");
-        return sb.toString();}
-
-    //415603
-//    public CartPage removeFromCart(String itemNumber) {
-//        By removeCertainProductFromCartBtnLocator = By.xpath("//button[@onclick='Shoppincart.removeItem(" + removeZero(itemNumber) + ")']");
-//        new WebDriverWait(driver, Duration.ofSeconds(15))
-//                .until(ExpectedConditions.elementToBeClickable(removeCertainProductFromCartBtnLocator))
-//                .click();
-//        return this;
-//    }
+        return sb.toString();
+    }
 
     //span[text()='BILLY']//ancestor::div[@class='item itemProduct']//span[text()='Remove'] черновик икспаса
     //span[text()='BILLY']//ancestor::div[@class='item itemProduct']//i[@class='iconPos-bin icon-bind'] черновик икспаса
     public CartPage removeProductFromCart() {
-       By removeFromCartBtnLocator = By.xpath("//span[text()='BILLY']//ancestor::div[@class='item itemProduct']//span[text()='Remove']");
-       new WebDriverWait(driver, Duration.ofSeconds(15))
-               .until(ExpectedConditions.elementToBeClickable(removeFromCartBtnLocator))
-               .click();
+        By removeFromCartBtnLocator = By.xpath("//span[text()='BILLY']//ancestor::div[@class='item itemProduct']//span[text()='Remove']");
+        new WebDriverWait(driver, Duration.ofSeconds(15))
+                .until(ExpectedConditions.elementToBeClickable(removeFromCartBtnLocator))
+                .click();
         return new CartPage();
     }
 
-    public boolean isProductRemoved(){
+    public boolean isProductRemoved() {
         driver.findElement(By.xpath("//span[text()='BILLY']")).isDisplayed();
         return true;
     }

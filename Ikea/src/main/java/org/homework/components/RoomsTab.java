@@ -1,30 +1,25 @@
 package org.homework.components;
 
-import org.homework.pages.ComfortToysPage;
 import org.homework.pages.DiningRoomPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class RoomsTab {
-    private WebDriver driver;
+    private final WebDriver driver;
+
     public RoomsTab(WebDriver driver) {
         this.driver = driver;
     }
-    private By diningRoomBtnLocator = By.xpath("//a[@href=\"/en/rooms/dining-room\"]");
 
-    public WebElement getDiningRoomsBtn(){
-        return driver.findElement(diningRoomBtnLocator);
-    }
-
-//    public DiningRoomPage selectCategoryInRoomsTab(String category){
-//        driver.findElement(By.xpath("//a[@href='/en/rooms/" + category + "']")).click();
-//        return new DiningRoomPage(driver);
-//    }
-
-    public DiningRoomPage clickDiningRoomsBtn(){
-        getDiningRoomsBtn().click();
+    public DiningRoomPage clickDiningRoomsBtn(String category) {
+        By diningRoomLocator = By.xpath("//div[@class='rooms']//a[text()='" + category + "']");
+        new WebDriverWait(driver, Duration.ofSeconds(15))
+                .until(ExpectedConditions.elementToBeClickable(diningRoomLocator))
+                .click();
         return new DiningRoomPage(driver);
     }
-
 }

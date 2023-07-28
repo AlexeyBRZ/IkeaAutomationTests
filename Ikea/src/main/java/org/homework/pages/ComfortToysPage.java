@@ -7,7 +7,7 @@ import org.openqa.selenium.WebElement;
 
 public class ComfortToysPage {
 
-    private WebDriver driver;
+    private final WebDriver driver;
 
     public ComfortToysPage(WebDriver driver) {
         this.driver = driver;
@@ -19,4 +19,3 @@ public class ComfortToysPage {
         return new ProductPage(driver);
     }
 }
-//following-sibling::div[@class=\"card-footer\"]//button

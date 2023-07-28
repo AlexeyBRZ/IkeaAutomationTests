@@ -1,4 +1,5 @@
 package org.homework.pages;
+
 import org.homework.components.Header;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -10,7 +11,10 @@ import java.time.Duration;
 
 public class HomePage {
 
-    private WebDriver driver;
+    private final WebDriver driver;
+    private final By ikeaForBusinessTitleLocator = By.xpath("//div[@class='container-fluid homepage']//h3[text()='IKEA for business']");
+    private final By acceptAllCookiesBtnLocator = By.xpath("//button[@id='CybotCookiebotDialogBodyLevelButtonLevelOptinAllowAll']");
+    private final String ikeaUrl = "https://www.ikea.lv/en";
 
     public HomePage(WebDriver driver) {
         this.driver = driver;
@@ -19,12 +23,6 @@ public class HomePage {
     public Header getHeader() {
         return new Header(driver);
     }
-
-    private By ikeaForBusinessTitleLocator = By.xpath("//div[@class=\"mb-4 text-wrap\"]//h3[text()= \"IKEA for business\"]");
-
-    private By acceptAllCookiesBtnLocator = By.xpath("//button[@id='CybotCookiebotDialogBodyLevelButtonLevelOptinAllowAll']");
-
-    private String ikeaUrl = "https://www.ikea.lv/en";
 
     public HomePage navigateToIkeaHomePage() {
         driver.get(ikeaUrl);
@@ -42,10 +40,15 @@ public class HomePage {
         return this;
     }
 
-   public HomePage clickPaxWardrobeSystemsBlock(){
-        driver.findElement(By.xpath("#traffic_group_118_96")).click();
+    public HomePage clickPaxWardrobeSystemsBlock() {
+        By paxWardrobeSystemsBlockLocator = By.xpath("//div[@class='container']//nav[@role='tablist']//a[text()='PAX wardrobe systems']");
+        new WebDriverWait(driver, Duration.ofSeconds(15))
+                .until(ExpectedConditions.elementToBeClickable(paxWardrobeSystemsBlockLocator))
+                .click();
         return this;
-   }
+    }
 
-
+    public WebElement getNextBtn() {
+        return driver.findElement(By.xpath("//a[text()='PAX wardrobe systems']//ancestor::div[@class='row']//button[@aria-label=\"Next\"]"));
+    }
 }

@@ -13,5 +13,4 @@ public interface Colors {
     String RED_COLOR = "#E82A00";
     String BLUE_COLOR = "#0099CC";
     String GOLD_COLOR = "#C98910";
-
 }
