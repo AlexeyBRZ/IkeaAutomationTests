@@ -1,7 +1,7 @@
 package org.homework;
 
 import io.restassured.http.ContentType;
-import org.homework.model.Pax;
+import org.homework.model.AccountId.Pax;
 import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
