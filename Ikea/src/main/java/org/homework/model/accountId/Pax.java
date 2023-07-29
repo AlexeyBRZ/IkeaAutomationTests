@@ -22,6 +22,7 @@ public class Pax {
     private List variables;
     private String version;
 
+
     public Pax(String accountId, boolean anonymizeIP, List<Attributes> attributes, List<Audience> audiences, boolean botFiltering,
                String environmentKey, List<Events> events, List<Experiments> experiments, List<FeatureFlags> featureFlags, List<Groups> groups,
                String projectId, String revision, List<Rollouts> rollouts, String sdKey, List<TypedAudiences> typedAudiences, List variables,
@@ -45,7 +46,7 @@ public class Pax {
         this.version = version;
     }
 
-    public Pax(){
+    public Pax() {
     }
 
     public List<Attributes> getAttributes() {
@@ -56,48 +57,52 @@ public class Pax {
         this.attributes = attributes;
     }
 
-    public void setAudiences(List<Audience> audiences) {
-        this.audiences = audiences;
-    }
-
     public String getVersion() {
         return version;
-    }
-
-    public String getAccountId() {
-        return accountId;
-    }
-
-    public String getProjectId() {
-        return projectId;
-    }
-
-    public String getRevision() {
-        return revision;
-    }
-
-    public List<Audience> getAudiences() {
-        return audiences;
-    }
-
-    public List<Events> getEvents() {
-        return events;
     }
 
     public void setVersion(String version) {
         this.version = version;
     }
 
+    public String getAccountId() {
+        return accountId;
+    }
+
     public void setAccountId(String accountId) {
         this.accountId = accountId;
+    }
+
+    public String getProjectId() {
+        return projectId;
     }
 
     public void setProjectId(String projectId) {
         this.projectId = projectId;
     }
 
+    public String getRevision() {
+        return revision;
+    }
+
     public void setRevision(String revision) {
         this.revision = revision;
+    }
+
+    public List<Audience> getAudiences() {
+        return audiences;
+    }
+
+    public void setAudiences(List<Audience> audiences) {
+        this.audiences = audiences;
+    }
+
+    public List<Events> getEvents() {
+        return events;
+    }
+
+    public void setEvents(List<Events> events) {
+        this.events = events;
     }
 
     public List getVariables() {
@@ -130,10 +135,6 @@ public class Pax {
 
     public void setBotFiltering(boolean botFiltering) {
         this.botFiltering = botFiltering;
-    }
-
-    public void setEvents(List<Events> events) {
-        this.events = events;
     }
 
     public List<TypedAudiences> getTypedAudiences() {

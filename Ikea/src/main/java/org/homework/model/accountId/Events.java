@@ -19,15 +19,15 @@ public class Events {
         return experimentIds;
     }
 
+    public void setExperimentIds(List experimentIds) {
+        this.experimentIds = experimentIds;
+    }
+
     public String getKey() {
         return key;
     }
 
     public void setKey(String key) {
         this.key = key;
-    }
-
-    public void setExperimentIds(List experimentIds) {
-        this.experimentIds = experimentIds;
     }
 }
