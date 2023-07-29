@@ -1,8 +1,11 @@
-package org.homework.model.AccountId;
+package org.homework.model.accountId;
 
-public class Audience {
+import java.util.List;
+
+
+public class TypedAudiences {
     private String name;
-    private String conditions;
+    private List<Conditions> conditions;
     private String id;
 
     public String getName() {
@@ -13,11 +16,11 @@ public class Audience {
         this.name = name;
     }
 
-    public String getConditions() {
+    public List<Conditions> getConditions() {
         return conditions;
     }
 
-    public void setConditions(String conditions) {
+    public void setConditions(List<Conditions> conditions) {
         this.conditions = conditions;
     }
 

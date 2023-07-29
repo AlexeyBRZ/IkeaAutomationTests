@@ -1,7 +1,8 @@
 package org.homework;
 
 import io.restassured.http.ContentType;
-import org.homework.model.AccountId.Pax;
+import org.homework.model.accountId.Pax;
+import org.homework.model.shortDescription.ShortDescription;
 import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
@@ -44,5 +45,21 @@ public class ApiTest {
                                                 .as(Pax.class);
 
         assertEquals("11701662245", response.getAccountId());
+    }
+
+    @Test
+    void shortDescriptionTest() {
+        ShortDescription response = given()
+                .accept(ContentType.JSON)
+                .when()
+                .get("https://productoffering-prod.2020-platform.com/API2/Catalogs/3NOAz_Dx8vM/Locales/ru-LV/Products/Common.Structural.Wall")
+                .then()
+                .statusCode(200)
+                .contentType(ContentType.JSON)
+                .extract()
+                .response()
+                .as(ShortDescription.class);
+
+        assertEquals("Стена", response.getShortDescription());
     }
 }

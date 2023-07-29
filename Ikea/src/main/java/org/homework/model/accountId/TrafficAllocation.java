@@ -1,4 +1,4 @@
-package org.homework.model.AccountId;
+package org.homework.model.accountId;
 
 public class TrafficAllocation {
     private String entityID;
