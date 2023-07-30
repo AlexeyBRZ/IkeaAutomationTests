@@ -26,4 +26,9 @@ public class ProductPage {
     public WebElement getMaterialsBlockBtn() {
         return driver.findElement(By.xpath("//a[@id=\"pills-environment-tab\"]"));
     }
+
+    public ProductPage clickAddToFavouritesBtn() {
+        driver.findElement(By.xpath("//button[@data-action='favorites']")).click();
+        return this;
+    }
 }

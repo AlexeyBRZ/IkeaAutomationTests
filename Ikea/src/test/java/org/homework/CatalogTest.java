@@ -38,7 +38,7 @@ public class CatalogTest extends BaseTest implements ProductNames, Categories, V
         Assertions.assertTrue(sideBoard.isDisplayed());
     }
 
-    @Test
+    @Test //не работает
     void canProductBeRemovedFromCart() {
         boolean billy = new HomePage(getDriver())
                 .navigateToIkeaHomePage()
@@ -50,7 +50,7 @@ public class CatalogTest extends BaseTest implements ProductNames, Categories, V
                 .clickQuickViewBtn(ProductNames.BILLY, 0)
                 .clickAddToShoppingCartFromQuickViewBtn()
                 .clickGoToShoppingCartBtn()
-                .removeProductFromCart() // не работает этот метод, не понимаю почему? получаю "java.lang.IllegalArgumentException: Input must be set"
+                .removeProductFromCart()
                 .isProductRemoved();
         Assertions.assertFalse(billy);
     }
@@ -85,6 +85,7 @@ public class CatalogTest extends BaseTest implements ProductNames, Categories, V
                 .clickResetFilters()
                 .clickColorDropDown()
                 .getColorCheckbox(Colors.BLACK_COLOR);
+
         Assertions.assertFalse(colorCheckbox.isSelected());
     }
 
@@ -101,9 +102,64 @@ public class CatalogTest extends BaseTest implements ProductNames, Categories, V
                 .inputSearchField("Bed")
                 .clickSearchBtn()
                 .clickCurrentlyInStockCheckBox()
-                //           .clickNewCheckBox() // не понимаю почему не прожимается этот чекбокс, все остальное работает
+                .clickNewCheckBox()
                 .getSortByDropDown();
         Assertions.assertTrue(isStockCheckBox.isDisplayed());
+    }
+
+    @Test
+    void lastViewedProductOnHistoryPage() {
+        WebElement lastViewedProduct = new HomePage(getDriver())
+                .navigateToIkeaHomePage()
+                .clickAcceptAllCookiesBtn()
+                .getHeader()
+                .clickRoomsDropDown()
+                .clickDiningRoomsBtn(Categories.DINNING_ROOM)
+                .clickCoffeeAndTeaImg()
+                .clickCupsAndMugsImg()
+                .selectProduct(ProductNames.VARDAGEN_CUP)
+                .getHeader()
+                .clickIkeaLogo()
+                .clickSeeMoreBtn()
+                .getRecentlyViewedProduct(ProductNames.VARDAGEN_CUP);
+
+        Assertions.assertTrue(lastViewedProduct.isDisplayed());
+    }
+
+    @Test
+    void errorIfInvalidEmailEntered() {
+        WebElement incorrectEmailError = new HomePage(getDriver())
+                .navigateToIkeaHomePage()
+                .clickAcceptAllCookiesBtn()
+                .getHeader()
+                .clickRoomsDropDown()
+                .clickOfficeBtn(Categories.OFFICE)
+                .selectDesksCategory()
+                .selectHomeDesksCategory()
+                .selectProduct(ProductNames.TORALD)
+                .clickAddToFavouritesBtn()
+                .getHeader()
+                .clickFavoritesBtn()
+                .enterInvalidEmail("invalidEmail")
+                .clickCreateAccountBtn()
+                .getErrorMessage();
+
+        Assertions.assertTrue(incorrectEmailError.isDisplayed());
+    }
+
+    @Test
+    void loginUserTest() {
+        WebElement hejUserBtn = new HomePage(getDriver())
+                .navigateToIkeaHomePage()
+                .clickAcceptAllCookiesBtn()
+                .getHeader()
+                .clickLoginOrRegisterBtn()
+                .inputEmail("ganon82729@naymedia.com")
+                .inputPassword("123456")
+                .clickLoginBtn()
+                .getHeyUserBtn();
+
+        Assertions.assertTrue(hejUserBtn.isDisplayed());
     }
 }
 

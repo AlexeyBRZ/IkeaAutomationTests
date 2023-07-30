@@ -7,6 +7,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.List;
 
 public class SearchResultsPage {
     private final WebDriver driver;
@@ -23,15 +24,22 @@ public class SearchResultsPage {
         return new SearchResultsPage(driver);
     }
 
-    //div[@id='newFilters']//input[@id="is_new"]
-    //div[@id='newFilters']//label[@for="is_new"]
-    //div[@id='contentWrapper']//div[@id='newFilters']//label[@for='is_new']
-    //label[@for='is_new']//parent::span[@class='icheck icheck_flat ']
     public SearchResultsPage clickNewCheckBox() {
-        By newCheckBoxLocator = By.xpath("//label[@for='is_new']//parent::span[@class='icheck icheck_flat ']");
-        new WebDriverWait(driver, Duration.ofSeconds(15))
-                .until(ExpectedConditions.elementToBeClickable(newCheckBoxLocator))
-                .click();
+        By progressBar = By.xpath("//div[@class='busy-load-container']//span[text()='Loading ...']");
+        List<WebElement> elementList = driver.findElements(progressBar);
+        boolean loadingIsShown = new WebDriverWait(driver, Duration.ofSeconds(15))
+                .until(ExpectedConditions.invisibilityOfAllElements(elementList));
+        if(loadingIsShown){
+            By newCheckBoxLocator = By.xpath("//label[@for='is_new']//parent::span[@class='icheck icheck_flat ']//ins[@class='iCheck-helper']");
+            boolean isSelected = new WebDriverWait(driver, Duration.ofSeconds(15))
+                    .until(ExpectedConditions.elementSelectionStateToBe(newCheckBoxLocator, false));
+            if (isSelected){
+
+                driver.findElement(newCheckBoxLocator).click();
+            }
+        }else{
+            throw new RuntimeException("Progress bar is shown");
+        }
         return this;
     }
 

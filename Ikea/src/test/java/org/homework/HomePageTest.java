@@ -22,12 +22,23 @@ public class HomePageTest extends BaseTest {
     }
 
     @Test
-    void isIkeaForBusinessArticleShown2() {
+    void isPaxWardrobeSystemBlockScrollable() {
         WebElement nextBtn = new HomePage(getDriver())
                 .navigateToIkeaHomePage()
-                .clickPaxWardrobeSystemsBlock()
+                .clickPaxWardrobeSystemsBlock() // тоже не работает
                 .getNextBtn();
 
         Assertions.assertTrue(nextBtn.isDisplayed());
+    }
+
+    @Test
+    void areBannersOnHomePageDisplayed() {
+        WebElement ikeaLifeBanner = new HomePage((getDriver()))
+                .navigateToIkeaHomePage()
+                .clickLearnMoreInTogetherBanner()// не работает
+                .getHomeMySelfTitle();
+
+        Assertions.assertEquals("https://ikealatvia.teamtailor.com/", driver.getCurrentUrl());
+        Assertions.assertTrue(ikeaLifeBanner.isDisplayed());
     }
 }

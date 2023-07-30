@@ -51,4 +51,14 @@ public class HomePage {
     public WebElement getNextBtn() {
         return driver.findElement(By.xpath("//a[text()='PAX wardrobe systems']//ancestor::div[@class='row']//button[@aria-label=\"Next\"]"));
     }
+
+    public YourHistoryPage clickSeeMoreBtn() {
+         driver.findElement(By.xpath("//div[@class='container d-print-none']//a[@href='/products/item_recently_viewed']")).click();
+        return new YourHistoryPage(driver);
+    }
+
+    public HomeMySelf clickLearnMoreInTogetherBanner(){
+       driver.findElement(By.xpath("//h3[text()='Together we get things done']//parent::div[@class='mb-4 text-wrap']//b")).click();
+       return new HomeMySelf(driver);
+    }
 }

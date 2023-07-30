@@ -25,11 +25,11 @@ public class CartModalWindow {
     }
 
     public CartPage clickGoToShoppingCartBtn() {
-        By goToCartBtnLocator = By.xpath("//div[@class='modal-footer d-block']//button[@data-action='goCart']");
-        new WebDriverWait(driver, Duration.ofSeconds(15))
+        By goToCartBtnLocator = By.xpath("//div[@class='modal-content modal-buy']//button[@data-action='goCart']");
+       new WebDriverWait(driver, Duration.ofSeconds(15))
                 .until(ExpectedConditions.elementToBeClickable(goToCartBtnLocator))
-                .click();
-        return new CartPage();
+                        .click();
+        return new CartPage(driver);
     }
 }
 

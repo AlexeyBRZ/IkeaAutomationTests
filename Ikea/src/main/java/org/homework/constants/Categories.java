@@ -7,4 +7,6 @@ public interface Categories {
     String DISPLAY_CABINETS = "display-cabinets";
     String OFFICE_CHAIRS = "Office chairs";
     String GLASSES = "Glasses";
+    String COFFEE_AND_TEA = "Coffee and tea";
+    String OFFICE = "Office";
 }

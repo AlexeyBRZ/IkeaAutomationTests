@@ -5,12 +5,12 @@ import org.openqa.selenium.WebDriver;
 
 public class DiningRoomPage {
     private final WebDriver driver;
-    private final By sideBoardsImgLocator = By.xpath("//a[@href='/en/rooms/dining-room/side-boards']");
-    private final By displayCabinetsLocator = By.xpath("//a[@href='/en/rooms/dining-room/display-cabinets']");
-
     public DiningRoomPage(WebDriver driver) {
         this.driver = driver;
     }
+    private final By sideBoardsImgLocator = By.xpath("//a[@href='/en/rooms/dining-room/side-boards']");
+    private final By displayCabinetsLocator = By.xpath("//a[@href='/en/rooms/dining-room/display-cabinets']");
+    private final By coffeeAndTeaLocator = By.xpath("//a[@href='/en/rooms/dining-room/coffee-and-tea']");
 
     public SideBoardsPage clickSideBoardsImg() {
         driver.findElement(sideBoardsImgLocator).click();
@@ -20,6 +20,11 @@ public class DiningRoomPage {
     public DisplayCabinetsPage clickDisplayCabinetsImg() {
         driver.findElement(displayCabinetsLocator).click();
         return new DisplayCabinetsPage(driver);
+    }
+
+    public CoffeeAndTeaPage clickCoffeeAndTeaImg() {
+        driver.findElement(coffeeAndTeaLocator).click();
+        return new CoffeeAndTeaPage(driver);
     }
 }
 
