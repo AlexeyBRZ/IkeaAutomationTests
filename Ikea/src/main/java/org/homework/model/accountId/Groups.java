@@ -5,7 +5,7 @@ import java.util.List;
 public class Groups {
     private String id;
     private String policy;
-    private List<TrafficAllocation> trafficAllocations;
+    private List<TrafficAllocation> trafficAllocation;
     private List<Experiments> experiments;
 
     public String getId() {
@@ -24,12 +24,12 @@ public class Groups {
         this.policy = policy;
     }
 
-    public List<TrafficAllocation> getTrafficAllocations() {
-        return trafficAllocations;
+    public List<TrafficAllocation> getTrafficAllocation() {
+        return trafficAllocation;
     }
 
-    public void setTrafficAllocations(List<TrafficAllocation> trafficAllocations) {
-        this.trafficAllocations = trafficAllocations;
+    public void setTrafficAllocation(List<TrafficAllocation> trafficAllocation) {
+        this.trafficAllocation = trafficAllocation;
     }
 
     public List<Experiments> getExperiments() {

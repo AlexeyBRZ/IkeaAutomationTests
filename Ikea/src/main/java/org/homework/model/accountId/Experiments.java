@@ -8,7 +8,7 @@ public class Experiments {
     private String status;
     private String layerId;
     private List<Variations> variations;
-    private List<TrafficAllocation> trafficAllocations;
+    private List<TrafficAllocation> trafficAllocation;
     private Object forcedVariations;
     private List audienceIds;
     private List audienceConditions;
@@ -53,12 +53,12 @@ public class Experiments {
         this.variations = variations;
     }
 
-    public List<TrafficAllocation> getTrafficAllocations() {
-        return trafficAllocations;
+    public List<TrafficAllocation> getTrafficAllocation() {
+        return trafficAllocation;
     }
 
-    public void setTrafficAllocations(List<TrafficAllocation> trafficAllocations) {
-        this.trafficAllocations = trafficAllocations;
+    public void setTrafficAllocation(List<TrafficAllocation> trafficAllocation) {
+        this.trafficAllocation = trafficAllocation;
     }
 
     public Object getForcedVariations() {

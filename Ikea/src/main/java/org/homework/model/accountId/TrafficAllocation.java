@@ -1,15 +1,15 @@
 package org.homework.model.accountId;
 
 public class TrafficAllocation {
-    private String entityID;
+    private String entityId;
     private int endOfRange;
 
-    public String getEntityID() {
-        return entityID;
+    public String getEntityId() {
+        return entityId;
     }
 
-    public void setEntityID(String entityID) {
-        this.entityID = entityID;
+    public void setEntityId(String entityId) {
+        this.entityId = entityId;
     }
 
     public int getEndOfRange() {

@@ -1,5 +1,9 @@
 package org.homework;
 
+import io.restassured.RestAssured;
+import io.restassured.common.mapper.TypeRef;
+import io.restassured.filter.log.RequestLoggingFilter;
+import io.restassured.filter.log.ResponseLoggingFilter;
 import io.restassured.http.ContentType;
 import org.homework.model.LibVersion;
 import org.homework.model.LocalizationService;
@@ -8,17 +12,24 @@ import org.homework.model.accountId.Pax;
 import org.homework.model.plannerShortDescription.Ceiling;
 import org.homework.model.plannerShortDescription.Floor;
 import org.homework.model.plannerShortDescription.Wall;
-import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.parallel.Execution;
 import org.junit.jupiter.api.parallel.ExecutionMode;
+
+import java.util.List;
 
 import static io.restassured.RestAssured.given;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ApiTest {
 
-    @Test
+    @BeforeAll
+    static void setUp() {
+        RestAssured.filters(new RequestLoggingFilter(), new ResponseLoggingFilter());
+    }
+
+    @Test //работает
     @Execution(ExecutionMode.CONCURRENT)
     void firstTest() {
         String firstUrl = "https://cdn.optimizely.com/datafiles/73ANu7N6D94s8inWeguwy.json";
@@ -32,8 +43,8 @@ public class ApiTest {
                 .statusCode(200);
     }
 
-    @Test
-        //пока не работает, надежды не теряю
+    @Test//работает
+    @Execution(ExecutionMode.CONCURRENT)
     void versionTest() {
         String firstUrl = "https://cdn.optimizely.com/datafiles/73ANu7N6D94s8inWeguwy.json";
 
@@ -68,12 +79,13 @@ public class ApiTest {
         assertEquals("Стена", response.getShortDescription());
     }
 
-    @Test// не работает, весь респонс массив?
+    @Test// работает
+    @Execution(ExecutionMode.CONCURRENT)
     void simpleCeilingTest() {
         String url = "\n" +
                 "https://productoffering-prod.2020-platform.com/API2/Catalogs/3NOAz_Dx8vM/Locales/ru-LV/Products/Common.Structural.Ceiling/Features";
 
-        SimpleCeiling response = given()
+        List<SimpleCeiling> response = given()
                 .accept(ContentType.JSON)
                 .when()
                 .get(url)
@@ -82,9 +94,10 @@ public class ApiTest {
                 .contentType(ContentType.JSON)
                 .extract()
                 .response()
-                .as(SimpleCeiling.class);
+                .as(new TypeRef<>() {
+                });
 
-        assertEquals("Потолок", response.getDescription());
+        assertEquals("Потолок", response.get(0).getDescription());
     }
 
     @Test//работает

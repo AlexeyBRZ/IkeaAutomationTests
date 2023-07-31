@@ -1,22 +1,26 @@
 package org.homework.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class AssetCodes {
-    private String Type;
-    private String Value;
+    @JsonProperty("Type")
+    private String type;
+    @JsonProperty("Value")
+    private String value;
 
     public String getType() {
-        return Type;
+        return type;
     }
 
     public void setType(String type) {
-        Type = type;
+        this.type = type;
     }
 
     public String getValue() {
-        return Value;
+        return value;
     }
 
     public void setValue(String value) {
-        Value = value;
+        this.value = value;
     }
 }

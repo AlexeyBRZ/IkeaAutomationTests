@@ -1,90 +1,114 @@
 package org.homework.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.List;
 
 public class SimpleCeiling {
+    @JsonProperty("IsMacro")
+    private boolean isMacro;
+    @JsonProperty("OptionCount")
+    private int optionCount;
+    @JsonProperty("FeatureType")
+    private int featureType;
+    @JsonProperty("AssetCodes")
+    private List<AssetCodes> assetCodes;
+    @JsonProperty("Id")
+    private int id;
+    @JsonProperty("Code")
+    private String code;
+    @JsonProperty("Description")
+    private String description;
+    @JsonProperty("Attributes")
+    private List<Object> attributes;
+    @JsonProperty("Tags")
+    private Object tags;
 
-    private boolean Ismarco;
-    private int OptionCount;
-    private List<AssetCodes> AssetCodes;
-    private int Id;
-    private String Code;
-    private String Description;
-    private List<Object> Attributes;
-    private Object Tags;
-
-    public SimpleCeiling(boolean ismarco, int optionCount, List assetCodes, int id, String code, String description, List attributes, Object tags) {
-        this.Ismarco = ismarco;
-        this.OptionCount = optionCount;
-        this.AssetCodes = assetCodes;
-        this.Id = id;
-        this.Code = code;
-        this.Description = description;
-        this.Attributes = attributes;
-        this.Tags = tags;
+    public SimpleCeiling(boolean isMacro, int optionCount, int featureType, List assetCodes, int id, String code, String description, List attributes, Object tags) {
+        this.isMacro = isMacro;
+        this.optionCount = optionCount;
+        this.featureType = featureType;
+        this.assetCodes = assetCodes;
+        this.id = id;
+        this.code = code;
+        this.description = description;
+        this.attributes = attributes;
+        this.tags = tags;
     }
 
-    public boolean isIsmarco() {
-        return Ismarco;
+    public SimpleCeiling() {
+
     }
 
-    public void setIsmarco(boolean ismarco) {
-        Ismarco = ismarco;
+    public boolean isMacro() {
+        return isMacro;
+    }
+
+    public void setMacro(boolean macro) {
+        this.isMacro = macro;
     }
 
     public int getOptionCount() {
-        return OptionCount;
+        return optionCount;
     }
 
     public void setOptionCount(int optionCount) {
-        OptionCount = optionCount;
+        this.optionCount = optionCount;
     }
 
     public List<org.homework.model.AssetCodes> getAssetCodes() {
-        return AssetCodes;
+        return assetCodes;
     }
 
     public void setAssetCodes(List<org.homework.model.AssetCodes> assetCodes) {
-        AssetCodes = assetCodes;
+        this.assetCodes = assetCodes;
     }
 
     public int getId() {
-        return Id;
+        return id;
     }
 
     public void setId(int id) {
-        Id = id;
+        id = id;
     }
 
     public String getCode() {
-        return Code;
+        return code;
     }
 
     public void setCode(String code) {
-        Code = code;
+        this.code = code;
     }
 
     public String getDescription() {
-        return Description;
+        return description;
     }
 
     public void setDescription(String description) {
-        Description = description;
+        this.description = description;
     }
 
     public List<Object> getAttributes() {
-        return Attributes;
+        return attributes;
     }
 
     public void setAttributes(List<Object> attributes) {
-        Attributes = attributes;
+        this.attributes = attributes;
     }
 
     public Object getTags() {
-        return Tags;
+        return tags;
     }
 
     public void setTags(Object tags) {
-        Tags = tags;
+        this.tags = tags;
+    }
+
+    public int getFeatureType() {
+        return featureType;
+    }
+
+    public void setFeatureType(int featureType) {
+        this.featureType = featureType;
     }
 }

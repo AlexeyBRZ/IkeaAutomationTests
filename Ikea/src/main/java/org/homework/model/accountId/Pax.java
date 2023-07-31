@@ -17,15 +17,15 @@ public class Pax {
     private String projectId;
     private String revision;
     private List<Rollouts> rollouts;
-    private String sdKey;
-    private List<TypedAudiences> typedAudiences;
+    private String sdkKey;
+    private List<Object> typedAudiences;
     private List variables;
     private String version;
 
 
     public Pax(String accountId, boolean anonymizeIP, List<Attributes> attributes, List<Audience> audiences, boolean botFiltering,
                String environmentKey, List<Events> events, List<Experiments> experiments, List<FeatureFlags> featureFlags, List<Groups> groups,
-               String projectId, String revision, List<Rollouts> rollouts, String sdKey, List<TypedAudiences> typedAudiences, List variables,
+               String projectId, String revision, List<Rollouts> rollouts, String sdkKey, List<Object> typedAudiences, List variables,
                String version) {
         this.accountId = accountId;
         this.anonymizeIP = anonymizeIP;
@@ -40,7 +40,7 @@ public class Pax {
         this.projectId = projectId;
         this.revision = revision;
         this.rollouts = rollouts;
-        this.sdKey = sdKey;
+        this.sdkKey = sdkKey;
         this.typedAudiences = typedAudiences;
         this.variables = variables;
         this.version = version;
@@ -137,20 +137,20 @@ public class Pax {
         this.botFiltering = botFiltering;
     }
 
-    public List<TypedAudiences> getTypedAudiences() {
+    public List<Object> getTypedAudiences() {
         return typedAudiences;
     }
 
-    public void setTypedAudiences(List<TypedAudiences> typedAudiences) {
+    public void setTypedAudiences(List<Object> typedAudiences) {
         this.typedAudiences = typedAudiences;
     }
 
-    public String getSdKey() {
-        return sdKey;
+    public String getSdkKey() {
+        return sdkKey;
     }
 
-    public void setSdKey(String sdKey) {
-        this.sdKey = sdKey;
+    public void setSdkKey(String sdkKey) {
+        this.sdkKey = sdkKey;
     }
 
     public List<FeatureFlags> getFeatureFlags() {

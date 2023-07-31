@@ -4,13 +4,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class BackofficeUrls {
     @JsonProperty("public")
-    private String Public;
+    private String testPublic;
     private String productoffering;
     private String userprofile;
     private String localizationservice;
 
-    public BackofficeUrls(String Public, String productoffering, String userprofile, String localizationservice) {
-        this.Public = Public;
+    public BackofficeUrls(String testPublic, String productoffering, String userprofile, String localizationservice) {
+        this.testPublic = testPublic;
         this.productoffering = productoffering;
         this.userprofile = userprofile;
         this.localizationservice = localizationservice;
@@ -19,12 +19,12 @@ public class BackofficeUrls {
     public BackofficeUrls() {
     }
 
-    public String getPublic() {
-        return Public;
+    public String getTestPublic() {
+        return testPublic;
     }
 
-    public void setPublic(String aPublic) {
-        Public = aPublic;
+    public void setTestPublic(String testPublic) {
+        this.testPublic = this.testPublic;
     }
 
     public String getProductoffering() {
