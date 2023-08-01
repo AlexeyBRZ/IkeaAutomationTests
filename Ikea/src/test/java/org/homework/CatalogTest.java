@@ -13,7 +13,7 @@ import org.junit.jupiter.api.parallel.Execution;
 import org.junit.jupiter.api.parallel.ExecutionMode;
 import org.openqa.selenium.WebElement;
 
-public class CatalogTest extends BaseTest implements ProductNames, Categories, Values {
+public class CatalogTest extends BaseTest {
 
     @Test
     void changeLanguageAndCookiesAcceptance() {
