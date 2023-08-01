@@ -9,4 +9,8 @@ public interface Categories {
     String GLASSES = "Glasses";
     String COFFEE_AND_TEA = "Coffee and tea";
     String OFFICE = "Office";
+    String OUTDOORS_SOFAS = "Outdoor sofas";
+    String FLOOR_LAMPS = "Floor lamps";
+    String FILTER_BY_CATEGORY = "CATEGORIES";
+    String FILTER_BY_RECOMMENDED = "RECOMMENDED";
 }

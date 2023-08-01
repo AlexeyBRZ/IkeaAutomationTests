@@ -14,17 +14,21 @@ public class CartPage {
         this.driver = driver;
     }
 
-    public CartPage removeProductFromCart() {
-        By removeFromCartBtnLocator = By.xpath("//span[text()='BILLY']//ancestor::div[@class='item itemProduct']//span[text()='Remove']");
+    public CartPage removeProductFromCart(String productName) {
+        By removeFromCartBtnLocator = By.xpath("//span[text()='" + productName + "']//ancestor::div[@class='item itemProduct']//span[text()='Remove']");
         new WebDriverWait(driver, Duration.ofSeconds(15))
                 .until(ExpectedConditions.elementToBeClickable(removeFromCartBtnLocator))
                 .click();
         return new CartPage(driver);
     }
 
-    public boolean isProductRemoved() {
-        driver.findElement(By.xpath("//span[text()='BILLY']")).isDisplayed();
-        return true;
+    public boolean isProductRemoved(String product) {
+        try {
+            driver.findElement(By.xpath("//span[text()='" + product + "']")).isDisplayed();
+            return true;
+        } catch (org.openqa.selenium.NoSuchElementException e) {
+            return false;
+        }
     }
 }
 

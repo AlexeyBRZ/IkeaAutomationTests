@@ -12,7 +12,12 @@ public class HomeMySelf {
         this.driver = driver;
     }
 
-    public WebElement getHomeMySelfTitle(){
-       return driver.findElement(By.xpath("//img[@alt='IKEA Latvija karjeras vietne']"));
+    public WebElement getHomeMySelfTitle() {
+        return driver.findElement(By.xpath("//div[@class='flex items-center mx-auto']//a[@href='https://ikealatvia.teamtailor.com/']"));
+    }
+
+    public HomeMySelf acceptCookies() {
+        driver.findElement(By.xpath("//button[text()='Atļaut visas']")).click();
+        return this;
     }
 }

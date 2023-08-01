@@ -5,8 +5,12 @@ import org.homework.constants.Colors;
 import org.homework.constants.ProductNames;
 import org.homework.constants.Values;
 import org.homework.pages.HomePage;
+import org.homework.pages.OutdoorsSofasPage;
+import org.homework.products.ProductPage;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.parallel.Execution;
+import org.junit.jupiter.api.parallel.ExecutionMode;
 import org.openqa.selenium.WebElement;
 
 public class CatalogTest extends BaseTest implements ProductNames, Categories, Values {
@@ -30,7 +34,7 @@ public class CatalogTest extends BaseTest implements ProductNames, Categories, V
                 .getHeader()
                 .clickRoomsDropDown()
                 .clickDiningRoomsBtn(Categories.DINNING_ROOM)
-                .clickSideBoardsImg()
+                .selectSideBoardsCategory()
                 .selectProduct(ProductNames.FJALLBO)
                 .clickAddToShoppingCartBtn()
                 .getProductInCartModalWindow(ProductNames.FJALLBO);
@@ -38,7 +42,7 @@ public class CatalogTest extends BaseTest implements ProductNames, Categories, V
         Assertions.assertTrue(sideBoard.isDisplayed());
     }
 
-    @Test //не работает
+    @Test
     void canProductBeRemovedFromCart() {
         boolean billy = new HomePage(getDriver())
                 .navigateToIkeaHomePage()
@@ -46,16 +50,17 @@ public class CatalogTest extends BaseTest implements ProductNames, Categories, V
                 .getHeader()
                 .clickRoomsDropDown()
                 .clickDiningRoomsBtn(Categories.DINNING_ROOM)
-                .clickDisplayCabinetsImg()
+                .selectDisplayCabinetsCategory()
                 .clickQuickViewBtn(ProductNames.BILLY, 0)
                 .clickAddToShoppingCartFromQuickViewBtn()
                 .clickGoToShoppingCartBtn()
-                .removeProductFromCart()
-                .isProductRemoved();
+                .removeProductFromCart(ProductNames.BILLY)
+                .isProductRemoved(ProductNames.BILLY);
         Assertions.assertFalse(billy);
     }
 
     @Test
+    @Execution(ExecutionMode.CONCURRENT)
     void isMaterialsBlockClickable() {
         WebElement materialBtn = new HomePage(getDriver())
                 .navigateToIkeaHomePage()
@@ -90,6 +95,7 @@ public class CatalogTest extends BaseTest implements ProductNames, Categories, V
     }
 
     @Test
+    @Execution(ExecutionMode.CONCURRENT)
     void searchFromPages() {
         WebElement isStockCheckBox = new HomePage(getDriver())
                 .navigateToIkeaHomePage()
@@ -108,6 +114,7 @@ public class CatalogTest extends BaseTest implements ProductNames, Categories, V
     }
 
     @Test
+    @Execution(ExecutionMode.CONCURRENT)
     void lastViewedProductOnHistoryPage() {
         WebElement lastViewedProduct = new HomePage(getDriver())
                 .navigateToIkeaHomePage()
@@ -115,7 +122,7 @@ public class CatalogTest extends BaseTest implements ProductNames, Categories, V
                 .getHeader()
                 .clickRoomsDropDown()
                 .clickDiningRoomsBtn(Categories.DINNING_ROOM)
-                .clickCoffeeAndTeaImg()
+                .selectCoffeeAndTeaCategory()
                 .clickCupsAndMugsImg()
                 .selectProduct(ProductNames.VARDAGEN_CUP)
                 .getHeader()
@@ -161,5 +168,82 @@ public class CatalogTest extends BaseTest implements ProductNames, Categories, V
 
         Assertions.assertTrue(hejUserBtn.isDisplayed());
     }
-}
 
+    @Test
+    @Execution(ExecutionMode.CONCURRENT)
+    void calculateDelivery() {
+        WebElement redMonkey = new HomePage(getDriver())
+                .navigateToIkeaHomePage()
+                .clickAcceptAllCookiesBtn()
+                .getHeader()
+                .clickProductsTab()
+                .selectComfortToysCategory(Categories.COMFORT_TOYS)
+                .selectProduct(ProductNames.RED_HEART)
+                .clickCalculateNow()
+                .getImgInDeliveryInf(ProductNames.RED_HEART);
+
+        Assertions.assertTrue(redMonkey.isDisplayed());
+    }
+
+    @Test
+    void sortByPrice() {
+        OutdoorsSofasPage outdoorsSofasPage = new HomePage(getDriver())
+                .navigateToIkeaHomePage()
+                .clickAcceptAllCookiesBtn()
+                .getHeader()
+                .clickProductsTab()
+                .selectOutDoorsSofasPage(Categories.OUTDOORS_SOFAS);
+
+        Assertions.assertTrue(outdoorsSofasPage.getOutDoorsCushionsLink().isDisplayed());
+        Assertions.assertTrue(outdoorsSofasPage.clickSortByDropDown().getFilterCategory(Categories.FILTER_BY_CATEGORY).isDisplayed());
+    }
+
+    @Test
+    @Execution(ExecutionMode.CONCURRENT)
+    void mustBeCompletedWithBox() {
+        WebElement completedWithBox = new HomePage(getDriver())
+                .navigateToIkeaHomePage()
+                .clickAcceptAllCookiesBtn()
+                .getHeader()
+                .clickProductsTab()
+                .selectFloorLampsPage(Categories.FLOOR_LAMPS)
+                .selectProduct(ProductNames.FLOOR_LAMP_ANKARSPEL)
+                .selectSecondCompletedWithOption()
+                .getCompletedWithItemImg();
+
+        Assertions.assertTrue(completedWithBox.isDisplayed());
+    }
+
+    @Test
+    void doProductImagesSwitch() {
+        ProductPage switchedProductImg = new HomePage(getDriver())
+                .navigateToIkeaHomePage()
+                .clickAcceptAllCookiesBtn()
+                .getHeader()
+                .clickRoomsDropDown()
+                .clickDiningRoomsBtn(Categories.DINNING_ROOM)
+                .selectDisplayCabinetsCategory()
+                .selectProduct(ProductNames.DISPLAY_CABINET_FABRIKÖR);
+
+        Assertions.assertNotEquals(switchedProductImg.getProductBigImg().getAttribute("href"),
+                switchedProductImg.slideProductImage().getProductBigImg().getAttribute("href"));
+    }
+
+    @Test
+    @Execution(ExecutionMode.CONCURRENT)
+    void checkStockAvailability() {
+        WebElement stockAvailabilityInfo = new HomePage(getDriver())
+                .navigateToIkeaHomePage()
+                .clickAcceptAllCookiesBtn()
+                .getHeader()
+                .clickProductsTab()
+                .selectGlassesCategory(Categories.GLASSES)
+                .selectProduct(ProductNames.GLASS_PLANERA)
+                .clickCheckStockInStoreBtn()
+                .getAvailabilityInStockMessage();
+
+        Assertions.assertTrue(stockAvailabilityInfo.isDisplayed());
+    }
+
+
+}

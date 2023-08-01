@@ -29,15 +29,15 @@ public class SearchResultsPage {
         List<WebElement> elementList = driver.findElements(progressBar);
         boolean loadingIsShown = new WebDriverWait(driver, Duration.ofSeconds(15))
                 .until(ExpectedConditions.invisibilityOfAllElements(elementList));
-        if(loadingIsShown){
+        if (loadingIsShown) {
             By newCheckBoxLocator = By.xpath("//label[@for='is_new']//parent::span[@class='icheck icheck_flat ']//ins[@class='iCheck-helper']");
             boolean isSelected = new WebDriverWait(driver, Duration.ofSeconds(15))
                     .until(ExpectedConditions.elementSelectionStateToBe(newCheckBoxLocator, false));
-            if (isSelected){
+            if (isSelected) {
 
                 driver.findElement(newCheckBoxLocator).click();
             }
-        }else{
+        } else {
             throw new RuntimeException("Progress bar is shown");
         }
         return this;

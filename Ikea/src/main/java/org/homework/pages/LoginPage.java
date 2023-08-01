@@ -29,9 +29,8 @@ public class LoginPage {
 
     public WebElement getErrorMessage() {
         By errorMessageLocator = By.xpath("//form[@class='form_create-form']//p[text()='The email is incorrect']");
-        WebElement errorMessage = new WebDriverWait(driver, Duration.ofSeconds(15))
+        return new WebDriverWait(driver, Duration.ofSeconds(15))
                 .until(ExpectedConditions.elementToBeClickable(errorMessageLocator));
-        return errorMessage;
     }
 
     public LoginPage inputEmail(String email) {

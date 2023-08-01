@@ -1,5 +1,6 @@
 package org.homework.components;
 
+import org.homework.pages.ContactsPage;
 import org.homework.pages.HomePage;
 import org.homework.pages.LoginPage;
 import org.homework.pages.SearchResultsPage;
@@ -71,8 +72,12 @@ public class Header {
     }
 
     public WebElement getHeyUserBtn() {
-      WebElement hejUserbtn = new WebDriverWait(driver,Duration.ofSeconds(15))
+        return new WebDriverWait(driver, Duration.ofSeconds(15))
                 .until(ExpectedConditions.elementToBeClickable(By.xpath("//a[contains(text(), 'Hej')]")));
-       return hejUserbtn;
+    }
+
+    public ContactsPage clickContactsBtn() {
+        driver.findElement(By.xpath("//div[@id='headerMainToggler']//a[@href='/en/page/contactsriga']")).click();
+        return new ContactsPage(driver);
     }
 }

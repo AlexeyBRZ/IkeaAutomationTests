@@ -3,7 +3,6 @@ package org.homework.pages;
 import org.homework.products.ProductPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
 public class SideBoardsPage {
     private final WebDriver driver;
@@ -13,8 +12,7 @@ public class SideBoardsPage {
     }
 
     public ProductPage selectProduct(String productName) {
-        WebElement product = driver.findElement(By.xpath("//h3[text()='" + productName + "']"));
-        product.click();
+        driver.findElement(By.xpath("//h3[text()='" + productName + "']")).click();
         return new ProductPage(driver);
     }
 }
