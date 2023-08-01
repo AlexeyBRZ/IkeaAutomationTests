@@ -10,27 +10,25 @@ import java.time.Duration;
 public class CartPage {
     private WebDriver driver;
 
-    public static String removeZero(String str) {
-        int i = 0;
-        while (i < str.length() & str.charAt(i) == '0') i++;
-        StringBuffer sb = new StringBuffer(str);
-        sb.replace(0, i, "");
-        return sb.toString();
+    public CartPage(WebDriver driver) {
+        this.driver = driver;
     }
 
-    //span[text()='BILLY']//ancestor::div[@class='item itemProduct']//span[text()='Remove'] черновик икспаса
-    //span[text()='BILLY']//ancestor::div[@class='item itemProduct']//i[@class='iconPos-bin icon-bind'] черновик икспаса
-    public CartPage removeProductFromCart() {
-        By removeFromCartBtnLocator = By.xpath("//span[text()='BILLY']//ancestor::div[@class='item itemProduct']//span[text()='Remove']");
+    public CartPage removeProductFromCart(String productName) {
+        By removeFromCartBtnLocator = By.xpath("//span[text()='" + productName + "']//ancestor::div[@class='item itemProduct']//span[text()='Remove']");
         new WebDriverWait(driver, Duration.ofSeconds(15))
                 .until(ExpectedConditions.elementToBeClickable(removeFromCartBtnLocator))
                 .click();
-        return new CartPage();
+        return new CartPage(driver);
     }
 
-    public boolean isProductRemoved() {
-        driver.findElement(By.xpath("//span[text()='BILLY']")).isDisplayed();
-        return true;
+    public boolean isProductRemoved(String product) {
+        try {
+            driver.findElement(By.xpath("//span[text()='" + product + "']")).isDisplayed();
+            return true;
+        } catch (org.openqa.selenium.NoSuchElementException e) {
+            return false;
+        }
     }
 }
 

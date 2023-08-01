@@ -1,9 +1,12 @@
 package org.homework.components;
 
+import org.homework.pages.ContactsPage;
 import org.homework.pages.HomePage;
+import org.homework.pages.LoginPage;
 import org.homework.pages.SearchResultsPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -50,5 +53,31 @@ public class Header {
     public SearchResultsPage clickSearchBtn() {
         driver.findElement(By.xpath("//div[@class='input-group']//button[@class='btn searchIcon']")).click();
         return new SearchResultsPage(driver);
+    }
+
+    public HomePage clickIkeaLogo() {
+        driver.findElement(By.xpath("//div[@class='container headerMenuProducts']//img[@alt='IKEA']")).click();
+        return new HomePage(driver);
+    }
+
+    public LoginPage clickFavoritesBtn() {
+        driver.findElement(By.xpath("//div[@class='container headerMenuProducts']" +
+                "//a[@href='/en/client/account/favourites']//span[@class='icon icon-fav']")).click();
+        return new LoginPage(driver);
+    }
+
+    public LoginPage clickLoginOrRegisterBtn() {
+        driver.findElement(By.xpath("//a[@href='/en/client']")).click();
+        return new LoginPage(driver);
+    }
+
+    public WebElement getHeyUserBtn() {
+        return new WebDriverWait(driver, Duration.ofSeconds(15))
+                .until(ExpectedConditions.elementToBeClickable(By.xpath("//a[contains(text(), 'Hej')]")));
+    }
+
+    public ContactsPage clickContactsBtn() {
+        driver.findElement(By.xpath("//div[@id='headerMainToggler']//a[@href='/en/page/contactsriga']")).click();
+        return new ContactsPage(driver);
     }
 }

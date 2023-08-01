@@ -1,5 +1,6 @@
 package org.homework.pages;
 
+import org.homework.components.Footer;
 import org.homework.components.Header;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -22,6 +23,10 @@ public class HomePage {
 
     public Header getHeader() {
         return new Header(driver);
+    }
+
+    public Footer getFooter() {
+        return new Footer(driver);
     }
 
     public HomePage navigateToIkeaHomePage() {
@@ -48,7 +53,16 @@ public class HomePage {
         return this;
     }
 
-    public WebElement getNextBtn() {
-        return driver.findElement(By.xpath("//a[text()='PAX wardrobe systems']//ancestor::div[@class='row']//button[@aria-label=\"Next\"]"));
+    public WebElement getShowAllBtn() {
+        return driver.findElement(By.xpath("//a[text()='PAX wardrobe systems']//ancestor::div[@class='row']//a[@href='/en/page/pax']"));
+    }
+
+    public YourHistoryPage clickSeeMoreBtn() {
+        driver.findElement(By.xpath("//div[@class='container d-print-none']//a[@href='/products/item_recently_viewed']")).click();
+        return new YourHistoryPage(driver);
+    }
+
+    public WebElement getLearnMoreInTogetherBanner() {
+        return driver.findElement(By.xpath("//h3[text()='Together we get things done']//parent::div[@class='mb-4 text-wrap']//b"));
     }
 }
