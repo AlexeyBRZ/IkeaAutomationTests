@@ -1,6 +1,6 @@
 package org.homework.components;
 
-import org.homework.pages.CartPage;
+import org.homework.pages.commonPages.CartPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

@@ -29,9 +29,9 @@ public class ApiTest {
         RestAssured.filters(new RequestLoggingFilter(), new ResponseLoggingFilter());
     }
 
-    @Test //работает
+    @Test
     @Execution(ExecutionMode.CONCURRENT)
-    void firstTest() {
+    void basicTest() {
         String firstUrl = "https://cdn.optimizely.com/datafiles/73ANu7N6D94s8inWeguwy.json";
 
         given()
@@ -43,7 +43,7 @@ public class ApiTest {
                 .statusCode(200);
     }
 
-    @Test//работает
+    @Test
     @Execution(ExecutionMode.CONCURRENT)
     void versionTest() {
         String firstUrl = "https://cdn.optimizely.com/datafiles/73ANu7N6D94s8inWeguwy.json";
@@ -62,7 +62,7 @@ public class ApiTest {
         assertEquals("11701662245", response.getAccountId());
     }
 
-    @Test//работает
+    @Test
     @Execution(ExecutionMode.CONCURRENT)
     void shortDescriptionOfWallTest() {
         Wall response = given()
@@ -79,11 +79,10 @@ public class ApiTest {
         assertEquals("Стена", response.getShortDescription());
     }
 
-    @Test// работает
+    @Test
     @Execution(ExecutionMode.CONCURRENT)
     void simpleCeilingTest() {
-        String url = "\n" +
-                "https://productoffering-prod.2020-platform.com/API2/Catalogs/3NOAz_Dx8vM/Locales/ru-LV/Products/Common.Structural.Ceiling/Features";
+        String url = "https://productoffering-prod.2020-platform.com/API2/Catalogs/3NOAz_Dx8vM/Locales/ru-LV/Products/Common.Structural.Ceiling/Features";
 
         List<SimpleCeiling> response = given()
                 .accept(ContentType.JSON)
@@ -100,7 +99,7 @@ public class ApiTest {
         assertEquals("Потолок", response.get(0).getDescription());
     }
 
-    @Test//работает
+    @Test
     @Execution(ExecutionMode.CONCURRENT)
     void shortDescriptionOfCeilingTest() {
         String url = "https://productoffering-prod.2020-platform.com/API2/Catalogs/3NOAz_Dx8vM/Locales/ru-LV/Products/Common.Structural.Ceiling";
@@ -119,7 +118,7 @@ public class ApiTest {
         assertEquals("Интерьер", response.getDescription());
     }
 
-    @Test //работает
+    @Test
     @Execution(ExecutionMode.CONCURRENT)
     void shortDescriptionOfFloorTest() {
         String url = "https://productoffering-prod.2020-platform.com/API2/Catalogs/3NOAz_Dx8vM/Locales/ru-LV/Products/Common.Structural.Floor";
@@ -138,7 +137,7 @@ public class ApiTest {
         assertEquals("Пол", response.getShortDescription());
     }
 
-    @Test//работает
+    @Test
     @Execution(ExecutionMode.CONCURRENT)
     void libNameTest() {
         String url = "https://isapi-prod.2020-platform.com/environment.json";
@@ -157,7 +156,7 @@ public class ApiTest {
         assertEquals("ISAPI", response.getLibName());
     }
 
-    @Test//работает
+    @Test
     @Execution(ExecutionMode.CONCURRENT)
     void localizationServiceLinkTEst() {
         String url = "https://idealspacescore-prod.2020-platform.com/components.json";

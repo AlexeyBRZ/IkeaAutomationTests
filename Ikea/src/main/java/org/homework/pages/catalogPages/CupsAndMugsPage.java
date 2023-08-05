@@ -1,13 +1,14 @@
-package org.homework.pages;
+package org.homework.pages.catalogPages;
 
-import org.homework.products.ProductPage;
+import org.homework.pages.commonPages.ProductPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class SideBoardsPage {
-    private final WebDriver driver;
+public class CupsAndMugsPage {
 
-    public SideBoardsPage(WebDriver driver) {
+    private WebDriver driver;
+
+    public CupsAndMugsPage(WebDriver driver) {
         this.driver = driver;
     }
 
