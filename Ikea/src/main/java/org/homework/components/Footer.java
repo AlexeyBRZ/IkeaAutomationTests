@@ -1,7 +1,7 @@
 package org.homework.components;
 
-import org.homework.pages.TermsAndConditionsPage;
-import org.homework.pages.ThisIsIkeaPage;
+import org.homework.pages.commonPages.TermsAndConditionsPage;
+import org.homework.pages.commonPages.ThisIsIkeaPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 

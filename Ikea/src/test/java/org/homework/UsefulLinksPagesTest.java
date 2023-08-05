@@ -2,8 +2,8 @@ package org.homework;
 
 import org.homework.constants.Articles;
 import org.homework.constants.Values;
-import org.homework.pages.HomePage;
-import org.homework.pages.TermsAndConditionsPage;
+import org.homework.pages.commonPages.HomePage;
+import org.homework.pages.commonPages.TermsAndConditionsPage;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.parallel.Execution;
@@ -28,7 +28,7 @@ public class UsefulLinksPagesTest extends BaseTest {
 
     @Test
     @Execution(ExecutionMode.CONCURRENT)
-    void contactEmail() {
+    void checkContactEmail() {
         WebElement contactUsArticle = new HomePage(getDriver())
                 .navigateToIkeaHomePage()
                 .clickAcceptAllCookiesBtn()

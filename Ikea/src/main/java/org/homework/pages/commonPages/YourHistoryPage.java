@@ -1,4 +1,4 @@
-package org.homework.pages;
+package org.homework.pages.commonPages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

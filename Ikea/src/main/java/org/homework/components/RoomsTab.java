@@ -1,7 +1,7 @@
 package org.homework.components;
 
-import org.homework.pages.DiningRoomPage;
-import org.homework.pages.OfficePage;
+import org.homework.pages.catalogPages.DiningRoomPage;
+import org.homework.pages.catalogPages.OfficePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;

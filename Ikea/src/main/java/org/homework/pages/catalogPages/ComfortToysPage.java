@@ -1,14 +1,15 @@
-package org.homework.pages;
+package org.homework.pages.catalogPages;
 
-import org.homework.products.ProductPage;
+import org.homework.pages.commonPages.ProductPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class FloorLampsPage {
-    private WebDriver driver;
+public class ComfortToysPage {
 
-    public FloorLampsPage(WebDriver driver) {
+    private final WebDriver driver;
+
+    public ComfortToysPage(WebDriver driver) {
         this.driver = driver;
     }
 

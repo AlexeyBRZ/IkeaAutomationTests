@@ -1,7 +1,7 @@
 package org.homework;
 
 import org.homework.constants.Values;
-import org.homework.pages.HomePage;
+import org.homework.pages.commonPages.HomePage;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.parallel.Execution;
@@ -25,7 +25,7 @@ public class HomePageTest extends BaseTest {
     }
 
     @Test
-    void isPaxWardrobeSystemBlockScrollable() {
+    void isShawAllBtnEnabled() {
         WebElement showAll = new HomePage(getDriver())
                 .navigateToIkeaHomePage()
                 .clickAcceptAllCookiesBtn()

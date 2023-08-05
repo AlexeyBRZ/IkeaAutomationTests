@@ -1,6 +1,6 @@
 package org.homework.components;
 
-import org.homework.pages.*;
+import org.homework.pages.catalogPages.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;

@@ -4,9 +4,9 @@ import org.homework.constants.Categories;
 import org.homework.constants.Colors;
 import org.homework.constants.ProductNames;
 import org.homework.constants.Values;
-import org.homework.pages.HomePage;
-import org.homework.pages.OutdoorsSofasPage;
-import org.homework.products.ProductPage;
+import org.homework.pages.commonPages.HomePage;
+import org.homework.pages.catalogPages.OutdoorsSofasPage;
+import org.homework.pages.commonPages.ProductPage;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.parallel.Execution;
@@ -27,7 +27,7 @@ public class CatalogTest extends BaseTest {
     }
 
     @Test
-    void canItemBeAddedToCart() {
+    void isProductAddedInCartModalWindow() {
         WebElement sideBoard = new HomePage(getDriver())
                 .navigateToIkeaHomePage()
                 .clickAcceptAllCookiesBtn()
@@ -56,12 +56,13 @@ public class CatalogTest extends BaseTest {
                 .clickGoToShoppingCartBtn()
                 .removeProductFromCart(ProductNames.BILLY)
                 .isProductRemoved(ProductNames.BILLY);
+
         Assertions.assertFalse(billy);
     }
 
     @Test
     @Execution(ExecutionMode.CONCURRENT)
-    void isMaterialsBlockClickable() {
+    void isMaterialsBlockDisplayed() {
         WebElement materialBtn = new HomePage(getDriver())
                 .navigateToIkeaHomePage()
                 .clickAcceptAllCookiesBtn()
@@ -110,6 +111,7 @@ public class CatalogTest extends BaseTest {
                 .clickCurrentlyInStockCheckBox()
                 .clickNewCheckBox()
                 .getSortByDropDown();
+
         Assertions.assertTrue(isStockCheckBox.isDisplayed());
     }
 
@@ -172,7 +174,7 @@ public class CatalogTest extends BaseTest {
     @Test
     @Execution(ExecutionMode.CONCURRENT)
     void calculateDelivery() {
-        WebElement redMonkey = new HomePage(getDriver())
+        WebElement toyImg = new HomePage(getDriver())
                 .navigateToIkeaHomePage()
                 .clickAcceptAllCookiesBtn()
                 .getHeader()
@@ -182,7 +184,7 @@ public class CatalogTest extends BaseTest {
                 .clickCalculateNow()
                 .getImgInDeliveryInf(ProductNames.RED_HEART);
 
-        Assertions.assertTrue(redMonkey.isDisplayed());
+        Assertions.assertTrue(toyImg.isDisplayed());
     }
 
     @Test

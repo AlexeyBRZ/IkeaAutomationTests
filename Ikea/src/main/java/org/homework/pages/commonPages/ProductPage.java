@@ -1,4 +1,4 @@
-package org.homework.products;
+package org.homework.pages.commonPages;
 
 import org.homework.components.CartModalWindow;
 import org.homework.components.Header;
