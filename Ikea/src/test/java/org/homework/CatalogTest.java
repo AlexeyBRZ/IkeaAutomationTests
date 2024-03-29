@@ -34,10 +34,10 @@ public class CatalogTest extends BaseTest {
                 .getHeader()
                 .clickRoomsDropDown()
                 .clickDiningRoomsBtn(Categories.DINNING_ROOM)
-                .selectSideBoardsCategory()
-                .selectProduct(ProductNames.FJALLBO)
+                .selectDiningTablesCategory()
+                .selectProduct(ProductNames.TORSBY)
                 .clickAddToShoppingCartBtn()
-                .getProductInCartModalWindow(ProductNames.FJALLBO);
+                .getProductInCartModalWindow(ProductNames.TORSBY);
 
         Assertions.assertTrue(sideBoard.isDisplayed());
     }

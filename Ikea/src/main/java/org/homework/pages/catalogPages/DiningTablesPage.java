@@ -3,11 +3,11 @@ package org.homework.pages.catalogPages;
 import org.homework.pages.commonPages.ProductPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+public class DiningTablesPage {
 
-public class SideBoardsPage {
     private final WebDriver driver;
 
-    public SideBoardsPage(WebDriver driver) {
+    public DiningTablesPage(WebDriver driver) {
         this.driver = driver;
     }
 
