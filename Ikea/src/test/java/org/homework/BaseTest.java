@@ -18,6 +18,8 @@ public class BaseTest {
 
     @BeforeAll
     static void downloadDriver() {
+        //should be used once webDriver was updated
+        //WebDriverManager.chromedriver().clearDriverCache().setup();
         WebDriverManager.chromedriver().setup();
         options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");

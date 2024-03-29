@@ -12,4 +12,5 @@ public interface ProductNames {
     String FLOOR_LAMP_ANKARSPEL = "ANKARSPEL";
     String DISPLAY_CABINET_FABRIKÖR = "FABRIKÖR";
     String GLASS_PLANERA = "PLANERA";
+    String TORSBY = "TORSBY";
 }
