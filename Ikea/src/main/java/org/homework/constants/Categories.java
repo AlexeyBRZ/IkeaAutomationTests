@@ -13,4 +13,5 @@ public interface Categories {
     String FLOOR_LAMPS = "Floor lamps";
     String FILTER_BY_CATEGORY = "CATEGORIES";
     String FILTER_BY_RECOMMENDED = "RECOMMENDED";
+    String SOFAS = "Sofas";
 }

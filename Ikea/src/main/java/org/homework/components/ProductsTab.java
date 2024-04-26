@@ -15,12 +15,12 @@ public class ProductsTab {
         this.driver = driver;
     }
 
-    public ComfortToysPage selectComfortToysCategory(String category) {
+    public SofasPage selectSofasCategory(String category) {
         By comfortToysLocator = By.xpath("//a[@class='dropdown-item']//span[text()='" + category + "']");
         new WebDriverWait(driver, Duration.ofSeconds(15))
                 .until(ExpectedConditions.elementToBeClickable(comfortToysLocator))
                 .click();
-        return new ComfortToysPage(driver);
+        return new SofasPage(driver);
     }
 
     public OfficeChairsPage selectOfficeChairsCategory(String category) {

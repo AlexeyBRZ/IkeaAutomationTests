@@ -34,12 +34,12 @@ public class LoginPage {
     }
 
     public LoginPage inputEmail(String email) {
-        driver.findElement(By.xpath("//form[@class='form_login-form']//input[@type='email']")).sendKeys(email);
+        driver.findElement(By.xpath("//form[@class='form_login-form sameHeight']//input[@type='email']")).sendKeys(email);
         return this;
     }
 
     public LoginPage inputPassword(String password) {
-        driver.findElement(By.xpath("//form[@class='form_login-form']//input[@type='password']")).sendKeys(password);
+        driver.findElement(By.xpath("//form[@class='form_login-form sameHeight']//input[@type='password']")).sendKeys(password);
         return this;
     }
 

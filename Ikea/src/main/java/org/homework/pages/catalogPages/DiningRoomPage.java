@@ -6,8 +6,9 @@ import org.openqa.selenium.WebDriver;
 public class DiningRoomPage {
     private final WebDriver driver;
     private final By diningTablesLocator = By.xpath("//a[@href='/en/rooms/dining-room/dining-tables']");
-    private final By displayCabinetsLocator = By.xpath("//a[@href='/en/rooms/dining-room/display-cabinets']");
-    private final By coffeeAndTeaLocator = By.xpath("//a[@href='/en/rooms/dining-room/coffee-and-tea']");
+    private final By diningRoomLightningLocator = By.xpath("//a[@href='/en/rooms/dining-room/dining-room-lighting']");
+    private final By cabinetsAndDisplayCabinetsLocator = By.xpath("//a[@href='/en/rooms/dining-room/cabinets-display-cabinets']");
+
     public DiningRoomPage(WebDriver driver) {
         this.driver = driver;
     }
@@ -17,14 +18,14 @@ public class DiningRoomPage {
         return new DiningTablesPage(driver);
     }
 
-    public DisplayCabinetsPage selectDisplayCabinetsCategory() {
-        driver.findElement(displayCabinetsLocator).click();
-        return new DisplayCabinetsPage(driver);
+    public CabinetsDisplayCabinetsPage selectCabinetsDisplayCabinetsCategory() {
+        driver.findElement(cabinetsAndDisplayCabinetsLocator).click();
+        return new CabinetsDisplayCabinetsPage(driver);
     }
 
-    public CoffeeAndTeaPage selectCoffeeAndTeaCategory() {
-        driver.findElement(coffeeAndTeaLocator).click();
-        return new CoffeeAndTeaPage(driver);
+    public DinningRoomLightningPage selectDiningRoomLightningCategory() {
+        driver.findElement(diningRoomLightningLocator).click();
+        return new DinningRoomLightningPage(driver);
     }
 }
 

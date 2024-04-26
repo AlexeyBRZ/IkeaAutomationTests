@@ -9,14 +9,14 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class DisplayCabinetsPage {
+public class CabinetsDisplayCabinetsPage {
     private final WebDriver driver;
 
-    public DisplayCabinetsPage(WebDriver driver) {
+    public CabinetsDisplayCabinetsPage(WebDriver driver) {
         this.driver = driver;
     }
 
-    public DisplayCabinetsPage clickQuickViewBtn(String productName, int position) {
+    public CabinetsDisplayCabinetsPage clickQuickViewBtn(String productName, int position) {
         driver.findElements(By.xpath("//h3[text()='" + productName + "']//ancestor::div[@class=\"card-body\"]//following-sibling::div[@class=\"card-footer\"]//button")).get(position).click();
         return this;
     }

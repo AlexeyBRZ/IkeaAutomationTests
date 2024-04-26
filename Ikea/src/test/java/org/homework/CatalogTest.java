@@ -50,26 +50,26 @@ public class CatalogTest extends BaseTest {
                 .getHeader()
                 .clickRoomsDropDown()
                 .clickDiningRoomsBtn(Categories.DINNING_ROOM)
-                .selectDisplayCabinetsCategory()
-                .clickQuickViewBtn(ProductNames.BILLY, 0)
+                .selectCabinetsDisplayCabinetsCategory()
+                .clickQuickViewBtn(ProductNames.CABINET_RUDSTA,0)
                 .clickAddToShoppingCartFromQuickViewBtn()
                 .clickGoToShoppingCartBtn()
-                .removeProductFromCart(ProductNames.BILLY)
-                .isProductRemoved(ProductNames.BILLY);
+                .removeProductFromCart(ProductNames.CABINET_RUDSTA)
+                .isProductRemoved(ProductNames.CABINET_RUDSTA);
 
         Assertions.assertFalse(billy);
     }
 
     @Test
-    @Execution(ExecutionMode.CONCURRENT)
+    //@Execution(ExecutionMode.CONCURRENT)
     void isMaterialsBlockDisplayed() {
         WebElement materialBtn = new HomePage(getDriver())
                 .navigateToIkeaHomePage()
                 .clickAcceptAllCookiesBtn()
                 .getHeader()
                 .clickProductsTab()
-                .selectComfortToysCategory(Categories.COMFORT_TOYS)
-                .selectProduct(ProductNames.GREY_RAT)
+                .selectSofasCategory(Categories.SOFAS)
+                .selectProduct(ProductNames.SOFA_SLATORP)
                 .getMaterialsBlockBtn();
 
         Assertions.assertTrue(materialBtn.isDisplayed());
@@ -96,7 +96,7 @@ public class CatalogTest extends BaseTest {
     }
 
     @Test
-    @Execution(ExecutionMode.CONCURRENT)
+    //@Execution(ExecutionMode.CONCURRENT)
     void searchFromPages() {
         WebElement isStockCheckBox = new HomePage(getDriver())
                 .navigateToIkeaHomePage()
@@ -116,7 +116,7 @@ public class CatalogTest extends BaseTest {
     }
 
     @Test
-    @Execution(ExecutionMode.CONCURRENT)
+  //  @Execution(ExecutionMode.CONCURRENT)
     void lastViewedProductOnHistoryPage() {
         WebElement lastViewedProduct = new HomePage(getDriver())
                 .navigateToIkeaHomePage()
@@ -124,13 +124,13 @@ public class CatalogTest extends BaseTest {
                 .getHeader()
                 .clickRoomsDropDown()
                 .clickDiningRoomsBtn(Categories.DINNING_ROOM)
-                .selectCoffeeAndTeaCategory()
-                .clickCupsAndMugsImg()
-                .selectProduct(ProductNames.VARDAGEN_CUP)
+                .selectDiningRoomLightningCategory()
+                .clickTableLampsImg()
+                .selectProduct(ProductNames.LAMP_TOKABO)
                 .getHeader()
                 .clickIkeaLogo()
                 .clickSeeMoreBtn()
-                .getRecentlyViewedProduct(ProductNames.VARDAGEN_CUP);
+                .getRecentlyViewedProduct(ProductNames.LAMP_TOKABO);
 
         Assertions.assertTrue(lastViewedProduct.isDisplayed());
     }
@@ -172,17 +172,17 @@ public class CatalogTest extends BaseTest {
     }
 
     @Test
-    @Execution(ExecutionMode.CONCURRENT)
+ //   @Execution(ExecutionMode.CONCURRENT)
     void calculateDelivery() {
         WebElement toyImg = new HomePage(getDriver())
                 .navigateToIkeaHomePage()
                 .clickAcceptAllCookiesBtn()
                 .getHeader()
                 .clickProductsTab()
-                .selectComfortToysCategory(Categories.COMFORT_TOYS)
-                .selectProduct(ProductNames.RED_HEART)
+                .selectSofasCategory(Categories.SOFAS)
+                .selectProduct(ProductNames.SOFA_SLATORP)
                 .clickCalculateNow()
-                .getImgInDeliveryInf(ProductNames.RED_HEART);
+                .getImgInDeliveryInf(ProductNames.SOFA_SLATORP);
 
         Assertions.assertTrue(toyImg.isDisplayed());
     }
@@ -201,7 +201,7 @@ public class CatalogTest extends BaseTest {
     }
 
     @Test
-    @Execution(ExecutionMode.CONCURRENT)
+  //  @Execution(ExecutionMode.CONCURRENT)
     void mustBeCompletedWithBox() {
         WebElement completedWithBox = new HomePage(getDriver())
                 .navigateToIkeaHomePage()
@@ -209,7 +209,7 @@ public class CatalogTest extends BaseTest {
                 .getHeader()
                 .clickProductsTab()
                 .selectFloorLampsPage(Categories.FLOOR_LAMPS)
-                .selectProduct(ProductNames.FLOOR_LAMP_ANKARSPEL)
+                .selectProduct(ProductNames.FLOOR_LAMP_VINDKAST)
                 .selectSecondCompletedWithOption()
                 .getCompletedWithItemImg();
 
@@ -224,7 +224,8 @@ public class CatalogTest extends BaseTest {
                 .getHeader()
                 .clickRoomsDropDown()
                 .clickDiningRoomsBtn(Categories.DINNING_ROOM)
-                .selectDisplayCabinetsCategory()
+                .selectCabinetsDisplayCabinetsCategory()
+               // .selectDisplayCabinetsCategory()
                 .selectProduct(ProductNames.DISPLAY_CABINET_FABRIKÖR);
 
         Assertions.assertNotEquals(switchedProductImg.getProductBigImg().getAttribute("href"),
@@ -232,7 +233,7 @@ public class CatalogTest extends BaseTest {
     }
 
     @Test
-    @Execution(ExecutionMode.CONCURRENT)
+  //  @Execution(ExecutionMode.CONCURRENT)
     void checkStockAvailability() {
         WebElement stockAvailabilityInfo = new HomePage(getDriver())
                 .navigateToIkeaHomePage()
@@ -246,6 +247,4 @@ public class CatalogTest extends BaseTest {
 
         Assertions.assertTrue(stockAvailabilityInfo.isDisplayed());
     }
-
-
 }

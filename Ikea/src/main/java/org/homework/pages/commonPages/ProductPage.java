@@ -48,7 +48,7 @@ public class ProductPage {
     }
 
     public ProductPage selectSecondCompletedWithOption() {
-        driver.findElement(By.xpath("//button[@aria-label='2 of 3']")).click();
+        driver.findElement(By.xpath("//button[@aria-label='2 of 2']")).click();
         return this;
     }
 
