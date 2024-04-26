@@ -3,17 +3,19 @@ package org.homework.pages.catalogPages;
 import org.homework.pages.commonPages.ProductPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
-public class CupsAndMugsPage {
+public class SofasPage {
 
-    private WebDriver driver;
+    private final WebDriver driver;
 
-    public CupsAndMugsPage(WebDriver driver) {
+    public SofasPage(WebDriver driver) {
         this.driver = driver;
     }
 
     public ProductPage selectProduct(String productName) {
-        driver.findElement(By.xpath("//h3[text()='" + productName + "']")).click();
+        WebElement product = driver.findElement(By.xpath("//h3[text()='" + productName + "']"));
+        product.click();
         return new ProductPage(driver);
     }
 }

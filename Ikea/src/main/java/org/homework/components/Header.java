@@ -72,7 +72,7 @@ public class Header {
     }
 
     public WebElement getHeyUserBtn() {
-        return new WebDriverWait(driver, Duration.ofSeconds(15))
+        return new WebDriverWait(driver, Duration.ofSeconds(20))
                 .until(ExpectedConditions.elementToBeClickable(By.xpath("//a[contains(text(), 'Hej')]")));
     }
 
