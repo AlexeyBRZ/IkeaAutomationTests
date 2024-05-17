@@ -6,28 +6,26 @@ import org.homework.pages.commonPages.HomePage;
 import org.homework.pages.commonPages.TermsAndConditionsPage;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.parallel.Execution;
-import org.junit.jupiter.api.parallel.ExecutionMode;
 import org.openqa.selenium.WebElement;
 
 public class UsefulLinksPagesTest extends BaseTest {
 
     @Test
-    @Execution(ExecutionMode.CONCURRENT)
+    //@Execution(ExecutionMode.CONCURRENT)
     void isWelcomeTitleDisplayed() {
         WebElement welcomeTitle = new HomePage(getDriver())
                 .navigateToIkeaHomePage()
                 .clickAcceptAllCookiesBtn()
                 .getFooter()
                 .clickAboutIkeaInFooter(Values.FOOTER_ABOUT_IKEA_LINK)
-                .followNewsRoomLink(Values.THIS_IS_IKEA_NEWSROOM_LINK)
+                .clickTheIkeaConceptBtn(Values.THE_IKEA_CONCEPT_BTN)
                 .getWelcomeTitle();
 
         Assertions.assertTrue(welcomeTitle.isDisplayed());
     }
 
     @Test
-    @Execution(ExecutionMode.CONCURRENT)
+   // @Execution(ExecutionMode.CONCURRENT)
     void checkContactEmail() {
         WebElement contactUsArticle = new HomePage(getDriver())
                 .navigateToIkeaHomePage()
@@ -40,7 +38,7 @@ public class UsefulLinksPagesTest extends BaseTest {
     }
 
     @Test
-    @Execution(ExecutionMode.CONCURRENT)
+    //@Execution(ExecutionMode.CONCURRENT)
     void termsAndConditionsArticles() {
         TermsAndConditionsPage termAndCond = new HomePage(getDriver())
                 .navigateToIkeaHomePage()

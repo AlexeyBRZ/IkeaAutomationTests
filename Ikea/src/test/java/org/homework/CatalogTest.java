@@ -9,8 +9,6 @@ import org.homework.pages.catalogPages.OutdoorsSofasPage;
 import org.homework.pages.commonPages.ProductPage;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.parallel.Execution;
-import org.junit.jupiter.api.parallel.ExecutionMode;
 import org.openqa.selenium.WebElement;
 
 public class CatalogTest extends BaseTest {
@@ -35,9 +33,9 @@ public class CatalogTest extends BaseTest {
                 .clickRoomsDropDown()
                 .clickDiningRoomsBtn(Categories.DINNING_ROOM)
                 .selectDiningTablesCategory()
-                .selectProduct(ProductNames.TORSBY)
+                .selectProduct(ProductNames.NORDEN)
                 .clickAddToShoppingCartBtn()
-                .getProductInCartModalWindow(ProductNames.TORSBY);
+                .getProductInCartModalWindow(ProductNames.NORDEN);
 
         Assertions.assertTrue(sideBoard.isDisplayed());
     }
@@ -51,11 +49,11 @@ public class CatalogTest extends BaseTest {
                 .clickRoomsDropDown()
                 .clickDiningRoomsBtn(Categories.DINNING_ROOM)
                 .selectCabinetsDisplayCabinetsCategory()
-                .clickQuickViewBtn(ProductNames.CABINET_RUDSTA,0)
+                .clickQuickViewBtn(ProductNames.SPIKSMED,0)
                 .clickAddToShoppingCartFromQuickViewBtn()
                 .clickGoToShoppingCartBtn()
-                .removeProductFromCart(ProductNames.CABINET_RUDSTA)
-                .isProductRemoved(ProductNames.CABINET_RUDSTA);
+                .removeProductFromCart(ProductNames.SPIKSMED)
+                .isProductRemoved(ProductNames.SPIKSMED);
 
         Assertions.assertFalse(billy);
     }
@@ -209,7 +207,7 @@ public class CatalogTest extends BaseTest {
                 .getHeader()
                 .clickProductsTab()
                 .selectFloorLampsPage(Categories.FLOOR_LAMPS)
-                .selectProduct(ProductNames.FLOOR_LAMP_VINDKAST)
+                .selectProduct(ProductNames.SVARTNORA)
                 .selectSecondCompletedWithOption()
                 .getCompletedWithItemImg();
 

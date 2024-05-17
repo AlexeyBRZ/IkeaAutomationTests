@@ -4,14 +4,12 @@ import org.homework.constants.Values;
 import org.homework.pages.commonPages.HomePage;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.parallel.Execution;
-import org.junit.jupiter.api.parallel.ExecutionMode;
 import org.openqa.selenium.WebElement;
 
 public class HomePageTest extends BaseTest {
 
     @Test
-    @Execution(ExecutionMode.CONCURRENT)
+   // @Execution(ExecutionMode.CONCURRENT)
     void isIkeaForBusinessArticleShown() {
         WebElement ikeaForBusinessTitle = new HomePage(getDriver())
                 .navigateToIkeaHomePage()
@@ -36,15 +34,15 @@ public class HomePageTest extends BaseTest {
     }
 
     @Test
-    @Execution(ExecutionMode.CONCURRENT)
-    void areBannersOnHomePageDisplayed() {
+   // @Execution(ExecutionMode.CONCURRENT)
+    void isIkeaForFamilyBannerDisplayed() {
         WebElement ikeaLifeBanner = new HomePage((getDriver()))
                 .navigateToIkeaHomePage()
                 .getHeader()
                 .clickLanguageDropDown()
                 .switchLanguage(Values.ENGLISH)
                 .clickAcceptAllCookiesBtn()
-                .getLearnMoreInTogetherBanner();
+                .getIkeaForFamilyBanner();
 
         Assertions.assertTrue(ikeaLifeBanner.isDisplayed());
     }

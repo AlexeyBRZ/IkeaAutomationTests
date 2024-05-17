@@ -13,7 +13,7 @@ import java.time.Duration;
 public class HomePage {
 
     private final WebDriver driver;
-    private final By ikeaForBusinessTitleLocator = By.xpath("//div[@class='container-fluid homepage']//h3[text()='IKEA for business']");
+    private final By ikeaForBusinessTitleLocator = By.xpath("//li[@class='nav-item']//a[text()='IKEA for business']");
     private final By acceptAllCookiesBtnLocator = By.xpath("//button[@id='CybotCookiebotDialogBodyLevelButtonLevelOptinAllowAll']");
     private final String ikeaUrl = "https://www.ikea.lv/en";
 
@@ -62,7 +62,7 @@ public class HomePage {
         return new YourHistoryPage(driver);
     }
 
-    public WebElement getLearnMoreInTogetherBanner() {
-        return driver.findElement(By.xpath("//h3[text()='Together we get things done']//parent::div[@class='mb-4 text-wrap']//b"));
+    public WebElement getIkeaForFamilyBanner() {
+        return driver.findElement(By.xpath("//h3[text()='IKEA Family offers for this month']"));
     }
 }

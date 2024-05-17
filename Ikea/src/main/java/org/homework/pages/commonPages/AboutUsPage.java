@@ -7,18 +7,18 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class ThisIsIkeaPage {
+public class AboutUsPage {
     private WebDriver driver;
 
-    public ThisIsIkeaPage(WebDriver driver) {
+    public AboutUsPage(WebDriver driver) {
         this.driver = driver;
     }
 
-    public NewsRoomPage followNewsRoomLink(String link) {
-        By newsRoomLinkLocator = By.xpath("//div[@id='smContainerToggler']//p[text()='" + link + "']");
+    public TheIkeaConceptPage clickTheIkeaConceptBtn(String link) {
+        By newsRoomLinkLocator = By.xpath("//button[text()='" + link + "']");
         new WebDriverWait(driver, Duration.ofSeconds(15))
                 .until(ExpectedConditions.elementToBeClickable(newsRoomLinkLocator))
                 .click();
-        return new NewsRoomPage(driver);
+        return new TheIkeaConceptPage(driver);
     }
 }
