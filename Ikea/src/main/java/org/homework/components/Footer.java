@@ -1,7 +1,7 @@
 package org.homework.components;
 
 import org.homework.pages.commonPages.TermsAndConditionsPage;
-import org.homework.pages.commonPages.ThisIsIkeaPage;
+import org.homework.pages.commonPages.AboutUsPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -13,9 +13,9 @@ public class Footer {
         this.driver = driver;
     }
 
-    public ThisIsIkeaPage clickAboutIkeaInFooter(String linkName) {
+    public AboutUsPage clickAboutIkeaInFooter(String linkName) {
         driver.findElement(By.xpath("//footer//a[text()='" + linkName + "']")).click();
-        return new ThisIsIkeaPage(driver);
+        return new AboutUsPage(driver);
     }
 
     public TermsAndConditionsPage clickTermAndCondInFooter(String linkName) {

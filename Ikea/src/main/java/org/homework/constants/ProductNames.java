@@ -9,11 +9,11 @@ public interface ProductNames {
     String VARDAGEN_CUP = "VARDAGEN";
     String TORALD = "TORALD";
     String RED_HEART = "FAMNIG HJÄRTA";
-    String FLOOR_LAMP_VINDKAST = "VINDKAST";
+    String SVARTNORA = "SVARTNORA";
     String DISPLAY_CABINET_FABRIKÖR = "FABRIKÖR";
     String GLASS_PLANERA = "PLANERA";
-    String TORSBY = "TORSBY";
+    String NORDEN = "NORDEN";
     String SOFA_SLATORP = "SLATORP";
-    String CABINET_RUDSTA = "RUDSTA";
+    String SPIKSMED = "SPIKSMED";
     String LAMP_TOKABO = "TOKABO";
 }
